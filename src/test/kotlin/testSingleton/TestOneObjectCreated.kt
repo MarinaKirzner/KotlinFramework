@@ -1,3 +1,6 @@
+package testSingleton
+
+import singleton.OneObject
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

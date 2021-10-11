@@ -1,3 +1,4 @@
+import singleton.OneObject
 
 //class Singleton private constructor() {
 //  companion object {

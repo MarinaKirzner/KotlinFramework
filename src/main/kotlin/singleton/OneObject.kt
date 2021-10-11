@@ -1,3 +1,5 @@
+package singleton
+
 class OneObject private constructor(){
   companion object {
     private var instance : OneObject? = null
