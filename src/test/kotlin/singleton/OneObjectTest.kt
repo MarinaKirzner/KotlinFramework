@@ -1,13 +1,12 @@
-package testSingleton
+package singleton
 
-import singleton.OneObject
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 
-class TestOneObjectCreated {
+class OneObjectTest {
 
   @Test
-  fun 'create one object'() {
+  fun `create one object`() {
    val firstObject = OneObject.getInstance()
    val secondObject = OneObject.getInstance()
 

@@ -1,7 +1,17 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
 
 plugins {
     kotlin("jvm") version "1.5.31"
+    idea
+}
+
+idea {
+  project {
+    jdkName = "1.8"
+    languageLevel = IdeaLanguageLevel("1.8")
+  }
+  module.name = "KotlinFramework"
 }
 
 group = "me.user"
@@ -12,9 +22,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-
 }
 
 tasks.test {
