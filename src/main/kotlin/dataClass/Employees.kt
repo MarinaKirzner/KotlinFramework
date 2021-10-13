@@ -1,7 +1,7 @@
 package dataClass
 
-import enum.Company
+import enum.Position
 
-data class Employees (var firstName: String, var lastName: String, val company: Company) {
+data class Employees (val company: String, val position: Position, val name: String) {
 
 }

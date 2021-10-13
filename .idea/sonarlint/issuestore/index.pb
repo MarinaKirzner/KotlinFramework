@@ -1,3 +1,3 @@
 
-V
-&src/main/kotlin/singleton/OneObject.kt,b\3\b38a67d9473489412426dab1cb4c75c0cd19baf9
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
