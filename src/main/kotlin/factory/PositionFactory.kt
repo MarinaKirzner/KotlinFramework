@@ -1,16 +1,16 @@
 package factory
 
-import factory.Position.PositionDEV
-import factory.Position.PositionPM
-import factory.Position.PositionQA
-import enum.Position
+import factory.position.PositionDEV
+import factory.position.PositionPM
+import factory.position.PositionQA
+import enum.PositionType
 
 class PositionFactory {
-  fun makePosition(position: Position): Company {
+  fun getPositionFactory(position: PositionType): Position {
     return when(position) {
-      Position.PM -> PositionPM()
-      Position.QA -> PositionQA()
-      Position.DEV -> PositionDEV()
+      PositionType.PM -> PositionPM()
+      PositionType.QA -> PositionQA()
+      PositionType.DEV -> PositionDEV()
     }
   }
 }

@@ -1,9 +1,9 @@
 package dataClass
 
-import enum.Position
+import enum.PositionType
 
 data class Employees (val company: String = "IDFinance",
-                      val position: Position = Position.QA,
+                      val position: PositionType = PositionType.QA,
                       val name: String = "Tom") {
 
 }
