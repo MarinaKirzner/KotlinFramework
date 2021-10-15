@@ -3,7 +3,23 @@
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 C
 settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
-P
- src/main/kotlin/enum/Position.kt,7\8\78781d3bdfeafc13f546c629c87552f8ab793f50
 ^
 .src/main/kotlin/factory/Position/PositionPM.kt,8\6\86a81252149bb87cf37287810de9d0c6822e740a
+X
+(src/main/kotlin/abstrackFactory/Chair.kt,9\f\9fa87ba999158e7189c6ba3f29a581f3dcc0231e
+V
+&src/main/kotlin/abstrackFactory/Dsp.kt,9\3\932583fa8f7550eb6b3c142d04f86efbd66d751f
+V
+&src/main/kotlin/dataClass/Employees.kt,f\3\f3c7b6b63a0718cec94da5855f8f8c7dfa4da466
+\
+,src/main/kotlin/abstrackFactory/Factory.java,c\1\c105d548d4c569c477b1ef6226bed3f28266689a
+c
+3src/main/kotlin/abstrackFactory/FactoryInterface.kt,5\1\518a551d9743e904cb1db88894857ccf83ce2f3c
+V
+&src/main/kotlin/singleton/OneObject.kt,b\3\b38a67d9473489412426dab1cb4c75c0cd19baf9
+X
+(src/main/kotlin/abstrackFactory/Table.kt,3\c\3c69ddc170d36df43147b829d710583cc2f30c64
+W
+'src/main/kotlin/abstrackFactory/Tree.kt,4\7\478967aa224293ceda874f70e2756e85a210b63a
+Z
+*src/test/kotlin/singleton/OneObjectTest.kt,a\9\a963c8dcdef6025e81ba09a0efcd3790080bf214
