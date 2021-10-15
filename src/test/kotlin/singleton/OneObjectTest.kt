@@ -9,7 +9,7 @@ class OneObjectTest {
    val firstObject : OneObject? = OneObject.getInstance()
    val secondObject : OneObject? = OneObject.getInstance()
 
-    assertEquals(firstObject, secondObject)
+    assertEquals(firstObject, secondObject, "Создается больше одного объекта")
 
   }
 
