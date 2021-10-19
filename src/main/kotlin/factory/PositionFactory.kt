@@ -7,7 +7,7 @@ import enum.PositionType
 
 class PositionFactory {
   fun getPositionFactory(position: PositionType): Position {
-    return when(position) {
+    return when (position) {
       PositionType.PM -> PositionPM()
       PositionType.QA -> PositionQA()
       PositionType.DEV -> PositionDEV()

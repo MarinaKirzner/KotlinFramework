@@ -1,18 +1,17 @@
 package factory
 
 import enum.PositionType
-import org.junit.jupiter.api.Assertions
+import factory.position.PositionPM
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class PositionPMFactoryTest {
 
   @Test
-  fun `Verify description created position PM`(){
-    val descriptionPositionExpected = "PM work with planning and reporting"
-    val descriptionPositionActual = PositionManager().creatPositionType(PositionType.PM)
+  fun `Verify description created for position type PM`() {
+    val descriptionPositionExpected = PositionPM.position
+    val descriptionPositionActual = PositionManager().createPositionType(PositionType.PM)
 
-    Assertions.assertEquals(descriptionPositionExpected, descriptionPositionActual, "Description is not correct")
-
+    assertEquals(descriptionPositionExpected, descriptionPositionActual, "Description is not correct")
   }
-
 }

@@ -1,5 +1,5 @@
 package factory
 
 interface Position {
-  fun creatPosition(): String
+  fun createPosition(): String
 }

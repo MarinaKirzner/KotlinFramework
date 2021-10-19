@@ -3,8 +3,11 @@ package factory.position
 import factory.Position
 
 class PositionPM : Position {
-  override fun creatPosition(): String {
-    val position = "PM work with planning and reporting"
+  companion object {
+    const val position: String = "PM created"
+  }
+
+  override fun createPosition(): String {
     println(position)
     return position
   }
