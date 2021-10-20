@@ -1,12 +1,12 @@
 package abstract_factory.furniture_type
 
-class CreateChair: Furniture {
+class CreateChair {
 
   companion object {
-    const val chair: String = "Chair created"
+    const val chair: String = "CHAIR created"
   }
 
-  override fun createFurniture(): String {
+  fun furniture(): String {
     println(chair)
     return chair
   }

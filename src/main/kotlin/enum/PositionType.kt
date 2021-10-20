@@ -1,5 +1,5 @@
 package enum
 
 enum class PositionType {
- PM, QA, DEV
+  PM, QA, DEV
 }
