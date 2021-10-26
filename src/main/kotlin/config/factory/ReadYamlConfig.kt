@@ -1,15 +1,15 @@
-package config
+package config.factory
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import data_class.ConfigFile
+import config.model.Config
 import enum.FormatType
 import java.io.File
 
-class ReadYamlConfig: ReadConfigFile {
-  override fun readConfigFile(): ConfigFile {
+class ReadYamlConfig : ReadConfigFile {
+  override fun readConfigFile(filePath: String): Config {
     val mapper = YAMLMapper()
-    val file = File(FormatType.YAML.path)
+    val file = File("$filePath${FormatType.YAML.path}")
     return mapper.readValue(file)
   }
 }
