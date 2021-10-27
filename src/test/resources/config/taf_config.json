@@ -1,5 +1,7 @@
 {
+  "host": "127.0.0.1",
   "url": "test",
   "login": "myemail@gmail.com",
-  "pass": "jhfloeriup"
+  "pass": "jhfloeriup",
+  "ignoreName": "name"
 }

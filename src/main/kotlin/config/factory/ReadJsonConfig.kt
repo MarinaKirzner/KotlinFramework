@@ -3,7 +3,7 @@ package config.factory
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import config.model.Config
-import enum.FormatType
+import config.provider.FormatType
 import java.io.File
 
 class ReadJsonConfig : ReadConfigFile {

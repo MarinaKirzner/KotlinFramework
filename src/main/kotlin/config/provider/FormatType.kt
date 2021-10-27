@@ -1,4 +1,4 @@
-package enum
+package config.provider
 
 enum class FormatType(val path: String) {
   YAML(".yaml"),

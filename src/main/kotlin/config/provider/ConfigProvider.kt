@@ -1,16 +1,20 @@
 package config.provider
 
-import config.model.Config
+import config.factory.ReadConfigFile
 import config.factory.ReadJsonConfig
 import config.factory.ReadYamlConfig
-import enum.FormatType
+import config.model.Config
 
 class ConfigProvider {
-  private val configFilePath = "src/test/resources/config/taf_config"
+  companion object {
+    private val CONFIG_FILE_PATH = "src/test/resources/config/taf_config"
+  }
+
   fun getConfig(formatType: FormatType): Config {
-    return when (formatType) {
-      FormatType.JSON -> ReadJsonConfig().readConfigFile(configFilePath)
-      FormatType.YAML -> ReadYamlConfig().readConfigFile(configFilePath)
+    val configFile: ReadConfigFile = when (formatType) {
+      FormatType.JSON -> ReadJsonConfig()
+      FormatType.YAML -> ReadYamlConfig()
     }
+    return configFile.readConfigFile(CONFIG_FILE_PATH)
   }
 }
