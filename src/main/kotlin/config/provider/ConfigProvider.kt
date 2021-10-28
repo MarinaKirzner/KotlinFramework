@@ -7,7 +7,7 @@ import config.model.Config
 
 class ConfigProvider {
   companion object {
-    private val CONFIG_FILE_PATH = "src/test/resources/config/taf_config"
+    private const val CONFIG_FILE_PATH = "src/test/resources/config/taf_config"
   }
 
   fun getConfig(formatType: FormatType): Config {
