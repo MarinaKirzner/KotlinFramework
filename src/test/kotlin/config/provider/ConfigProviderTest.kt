@@ -12,15 +12,11 @@ import kotlin.math.log
 
 class ConfigProviderTest {
 
+  val logger: Logger = LogManager.getRootLogger()
+
   @ParameterizedTest(name = "Verify getConfig returns config from file {arguments}")
   @EnumSource(FormatType::class)
   fun `Verify getConfig returns config from file`(formatType: FormatType) {
-
-    val logger: Logger = LogManager.getRootLogger()
-    logger.info("Selected factory for read config file")
-    logger.error("No factory selected for reading configuration file")
-
-
     val expectedObject = Config(myHost = "127.0.0.1", url = "test", login = "myemail@gmail.com", pass = "jhfloeriup")
     val actualObject: Config = ConfigProvider().getConfig(formatType)
 
