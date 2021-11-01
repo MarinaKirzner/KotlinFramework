@@ -1,6 +1,5 @@
 package config.provider
 
-import config.factory.ReadYamlConfig.Companion.logger
 import config.model.Config
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -11,8 +10,6 @@ import org.junit.jupiter.params.provider.EnumSource
 import kotlin.math.log
 
 class ConfigProviderTest {
-
-  val logger: Logger = LogManager.getRootLogger()
 
   @ParameterizedTest(name = "Verify getConfig returns config from file {arguments}")
   @EnumSource(FormatType::class)
