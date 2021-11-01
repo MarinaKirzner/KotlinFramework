@@ -6,24 +6,24 @@ Configuration:
       name: filename
       value: target/test-yaml.log
   thresholdFilter:
-    level: debug
+    level: info
   appenders:
     Console:
       name: STDOUT
       target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "%m%n"
+        Pattern: "%highlight{%d{yyyy:MM:dd HH:mm:ss.SSS}[%-5level][%-10t]%-10.10logger{1.} : %msg}%xEx%n"
     File:
       name: File
-      fileName: ${filename}
+      fileName: target/test-yaml.log
       PatternLayout:
-        Pattern: "%d %p %C{1.} [%t] %m%n"
+        Pattern: "%highlight{%d{yyyy:MM:dd HH:mm:ss.SSS}[%-5level][%-10t]%-10.10logger{1.} : %msg}%xEx%n"
       Filters:
         ThresholdFilter:
-          level: error
-
+          level: info
   Loggers:
     Root:
       level: info
       AppenderRef:
-        ref: STDOUT
+      -  ref: STDOUT
+      -  ref: File
