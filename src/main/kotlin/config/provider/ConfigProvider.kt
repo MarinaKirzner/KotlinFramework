@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger
 class ConfigProvider {
 
   companion object {
-    private val logger: Logger = LogManager.getRootLogger()
+    private val logger: Logger = LogManager.getLogger()
     private const val CONFIG_FILE_PATH = "src/test/resources/config/taf_config"
   }
 
@@ -20,7 +20,6 @@ class ConfigProvider {
       FormatType.JSON -> ReadJsonConfig()
       FormatType.YAML -> ReadYamlConfig()
     }
-    logger.info("Factory selected")
     return configFile.readConfigFile(CONFIG_FILE_PATH)
   }
 }

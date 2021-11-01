@@ -11,7 +11,7 @@ import java.io.File
 class ReadJsonConfig : ReadConfigFile {
 
   companion object {
-    private val logger: Logger = LogManager.getRootLogger()
+    private val logger: Logger = LogManager.getLogger()
   }
 
   override fun readConfigFile(filePath: String): Config {

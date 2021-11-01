@@ -13,7 +13,7 @@ import java.io.File
 class ReadYamlConfig : ReadConfigFile {
 
   companion object {
-    val logger: Logger = LogManager.getRootLogger()
+    val logger: Logger = LogManager.getLogger()
   }
 
   override fun readConfigFile(filePath: String): Config {
