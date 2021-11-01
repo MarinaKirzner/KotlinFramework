@@ -26,6 +26,8 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
   implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0")
+  implementation("org.apache.logging.log4j:log4j-api:2.14.1")
+  implementation("org.apache.logging.log4j:log4j-core:2.14.1")
 }
 
 tasks.test {
