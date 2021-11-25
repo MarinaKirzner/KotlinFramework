@@ -1,0 +1,4 @@
+timeout: 10000
+browserScreenSize: 1920x1080
+browserType: FIREFOX
+webDriverType: LOCAL
