@@ -27,3 +27,8 @@ hs_err_pid*
 # Gradle
 .gradle
 /gradle/wrapper
+/src/main/kotlin/exercise.selenium/
+/src/test/kotlin/exercise.selenium/
+/src/main/kotlin/exercise/
+/src/main/kotlin/exercise/
+/src/test/kotlin/exercise/

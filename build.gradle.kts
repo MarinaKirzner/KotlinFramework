@@ -32,13 +32,6 @@ dependencies {
   implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0")
   implementation("org.apache.logging.log4j:log4j-api:2.14.1")
   implementation("org.apache.logging.log4j:log4j-core:2.14.1")
-//  implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
-//  implementation("org.seleniumhq.selenium:selenium-api:3.141.59")
-//  implementation("ru.yandex.qatools.htmlelements:htmlelements-java:1.20.0")
-//  implementation("ru.sbtqa.htmlelements:htmlelements-matchers:1.17-JAVA7")
-//  implementation("net.lightbody.bmp:browsermob-proxy:2.1.5")
-
-//  implementation("com.google.inject:guice:5.0.1")
   implementation ("com.codeborne:selenide:6.0.3")
 }
 
