@@ -1,6 +1,6 @@
 package core.model
 
-data class DataConfig(
+data class ApplicationConfig(
   val user: String,
   val pass: String,
   val host: String

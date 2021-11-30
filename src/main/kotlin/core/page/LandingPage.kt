@@ -3,39 +3,39 @@ package core.page
 import com.codeborne.selenide.Selenide.open
 import core.`object`.ClickButton.clickButton
 import core.`object`.InputValue.setInputValue
-import core.model.DataConfig
-import core.provider.ReadDataConfigProvider
+import core.model.ApplicationConfig
+import core.provider.ApplicationConfigProvider
 import org.openqa.selenium.By
 import org.openqa.selenium.By.id
 import org.openqa.selenium.By.xpath
 
 class LandingPage : BasePage() {
 
-  private val dataConfig: DataConfig = ReadDataConfigProvider().getDataConfig()
-  override val url: String = "https://${dataConfig.user}:${dataConfig.pass}@${dataConfig.host}"
+  private val applicationConfig: ApplicationConfig = ApplicationConfigProvider().getDataConfig()
+  override val url: String = "https://${applicationConfig.user}:${applicationConfig.pass}@${applicationConfig.host}"
 
-  val acceptCookies: By = By.xpath("//button[text()='Aceptar todo']")
-  val creditAmount: By = id("loanAmount")
-  val loanDays: By = id("loanDays")
-  val requestRegistration: By = xpath("//a[@class='btn btn_red mainCalculator__submit']")
+  val acceptCookiesButton: By = By.xpath("//button[text()='Aceptar todo']")
+  val creditAmountInput: By = id("loanAmount")
+  val loanDaysInput: By = id("loanDays")
+  val requestRegistrationButton: By = xpath("//a[@class='btn btn_red mainCalculator__submit']")
 
   override fun openPage() {
     open(url)
   }
 
-  fun acceptCookies() {
-    clickButton(acceptCookies)
+  fun clickAcceptCookies() {
+    clickButton(acceptCookiesButton)
   }
 
-  fun creditAmount(sum: String) {
-    setInputValue(creditAmount, sum)
+  fun setCreditAmount(sum: String) {
+    setInputValue(creditAmountInput, sum)
   }
 
-  fun loanDays(loan: String) {
-    setInputValue(loanDays, loan)
+  fun setLoanDays(loan: String) {
+    setInputValue(loanDaysInput, loan)
   }
 
   fun requestRegistration() {
-    clickButton(requestRegistration)
+    clickButton(requestRegistrationButton)
   }
 }

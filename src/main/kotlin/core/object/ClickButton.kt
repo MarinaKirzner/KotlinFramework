@@ -1,5 +1,7 @@
 package core.`object`
 
+import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Selenide.`$`
 import com.codeborne.selenide.Selenide.sleep
 import com.codeborne.selenide.Selenide.webdriver
 import org.apache.logging.log4j.LogManager
@@ -10,10 +12,11 @@ object ClickButton {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun clickButton(element: By) {
-
+  fun clickButton(locator: By) {
     sleep(3000)
-    webdriver().driver().webDriver.findElement(element).click()
-    logger.info("Click button $element")
+    logger.info("Click button $locator")
+    `$`(locator).also { element ->
+      element.shouldBe(Condition.visible).click()
+    }
   }
 }
