@@ -8,10 +8,10 @@ import core.model.DriverConfig
 abstract class BaseDriverFactory : ReadConfig {
 
   override fun setConfig(driverConfig: DriverConfig) {
-    apply{
+    apply {
       timeout = driverConfig.timeout
       browserSize = driverConfig.browserScreenSize
-      browser = driverConfig.browserType
+      browser = driverConfig.browserType.toString()
     }
   }
 }

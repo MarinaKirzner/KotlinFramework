@@ -3,14 +3,13 @@ package core.page
 import com.codeborne.selenide.Selenide.open
 import core.`object`.ClickButton.clickButton
 import core.`object`.InputValue.setInputValue
-import core.provider.ReadDataConfigProvider
 import core.model.DataConfig
+import core.provider.ReadDataConfigProvider
 import org.openqa.selenium.By
 import org.openqa.selenium.By.id
 import org.openqa.selenium.By.xpath
 
-class LandingPage: BasePage() {
-
+class LandingPage : BasePage() {
 
   private val dataConfig: DataConfig = ReadDataConfigProvider().getDataConfig()
   override val url: String = "https://${dataConfig.user}:${dataConfig.pass}@${dataConfig.host}"
@@ -39,5 +38,4 @@ class LandingPage: BasePage() {
   fun requestRegistration() {
     clickButton(requestRegistration)
   }
-
 }
