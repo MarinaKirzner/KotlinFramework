@@ -10,7 +10,7 @@ object Browser {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun verifyUrl(url: String) {
+  fun verifyCurrentUrl(url: String) {
     sleep(3000)
     logger.info("Verify registration URL - $url")
     webdriver().shouldHave(url(url))

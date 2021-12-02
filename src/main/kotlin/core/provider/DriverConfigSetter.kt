@@ -9,11 +9,11 @@ import core.factory.FireFoxDriverFactory
 import core.factory.RemoteDriverFactory
 import core.model.DriverConfig
 
-class DriverProvider {
+class DriverConfigSetter {
 
   val driverConfig: DriverConfig = DriverConfigProvider().getDriverConfig()
 
-  fun getDriverConfig() {
+  fun setDriverConfig() {
     val driverFactory: BaseDriverFactory = when (driverConfig.webDriverType) {
       WebDriverType.LOCAL -> {
         when (driverConfig.browserType) {

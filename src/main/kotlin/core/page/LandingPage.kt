@@ -3,16 +3,14 @@ package core.page
 import com.codeborne.selenide.Selenide.open
 import core.`object`.ClickButton.clickButton
 import core.`object`.InputValue.setInputValue
-import core.model.ApplicationConfig
-import core.provider.ApplicationConfigProvider
+import core.holder.StaticContextHolder.applicationConfig
 import org.openqa.selenium.By
 import org.openqa.selenium.By.id
 import org.openqa.selenium.By.xpath
 
-class LandingPage : BasePage() {
+open class LandingPage : BasePage() {
 
-  private val applicationConfig: ApplicationConfig = ApplicationConfigProvider().getDataConfig()
-  override val url: String = "https://${applicationConfig.user}:${applicationConfig.pass}@${applicationConfig.host}"
+  override val url: String = "https://${applicationConfig?.user}:${applicationConfig?.pass}@${applicationConfig?.host}"
 
   val acceptCookiesButton: By = By.xpath("//button[text()='Aceptar todo']")
   val creditAmountInput: By = id("loanAmount")
@@ -23,15 +21,15 @@ class LandingPage : BasePage() {
     open(url)
   }
 
-  fun clickAcceptCookies() {
+  fun acceptCookies() {
     clickButton(acceptCookiesButton)
   }
 
-  fun setCreditAmount(sum: String) {
+  fun creditAmount(sum: String) {
     setInputValue(creditAmountInput, sum)
   }
 
-  fun setLoanDays(loan: String) {
+  fun loanDays(loan: String) {
     setInputValue(loanDaysInput, loan)
   }
 
