@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class ApplicationPropertiesTest {
 
   @Test
-  fun `Authentication using SystemProperties`() {
+  fun `Verify setting system properties`() {
     val expectedUser = "test1"
     val expectedPass = "test1"
     System.setProperty(TafSystemProperties.USER, expectedUser)

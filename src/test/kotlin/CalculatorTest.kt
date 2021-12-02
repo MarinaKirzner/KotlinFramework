@@ -10,7 +10,7 @@ class CalculatorTest : BaseUiTest() {
   val days: String = "7"
 
   @Test
-  fun `Checking user registration on the main page`() {
+  fun `Verify user registration on the main page`() {
     val url: String =
       "https://${applicationConfig?.user}:${applicationConfig?.pass}@${applicationConfig?.host}${"/client-area/#/registration?"}"
     DriverConfigSetter().setDriverConfig()
