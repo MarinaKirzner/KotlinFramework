@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test
 class ApplicationPropertiesTest {
 
   @Test
-  fun `Verify the configuration and make appConfig_user and appConfig_pass from the systems property`() {
+  fun `Verify configuration provider uses system properties`() {
     val expectedUser = "test1"
     val expectedPass = "test1"
     System.setProperty(TafSystemProperties.USER, expectedUser)
     System.setProperty(TafSystemProperties.PASS, expectedPass)
-
     val appConfig = ApplicationConfigProvider().getApplicationConfig()
     val actualUser = appConfig.user
     val actualPass = appConfig.pass
-
-    Assertions.assertEquals(expectedUser, actualUser, "User not correct")
-    Assertions.assertEquals(expectedPass, actualPass, "Pass not correct")
+    Assertions.assertEquals(expectedUser, actualUser, "Expected user $expectedUser doesn't match actual $actualUser")
+    Assertions.assertEquals(expectedPass, actualPass, "Expected pass $expectedPass doesn't match actual $actualPass")
   }
 
   @AfterEach

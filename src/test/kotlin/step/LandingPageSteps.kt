@@ -4,28 +4,31 @@ import core.page.LandingPage
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-class LandingPageSteps : LandingPage() {
+class LandingPageSteps {
 
   private val logger: Logger = LogManager.getLogger()
+  private val landingPage: LandingPage by lazy { LandingPage() }
 
   fun openLandingPage() {
     logger.info("Open landing page - http://qa-delivery-es-release.moneyman.ru")
-    openPage()
+    landingPage.openPage()
   }
 
   fun clickAcceptCookies() {
     logger.info("Click accept cookies")
-    acceptCookies()
+    landingPage.acceptCookies()
   }
 
   fun fillCalculator(sum: String, days: String) {
     logger.info("Fill calculator form")
-    creditAmount(sum)
-    loanDays(days)
+    landingPage.apply {
+      creditAmount(sum)
+      loanDays(days)
+    }
   }
 
   fun clickRequestRegistration() {
     logger.info("Click button to registration")
-    requestRegistration()
+    landingPage.requestRegistration()
   }
 }
