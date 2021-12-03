@@ -15,7 +15,7 @@ Configuration:
         Pattern: "%highlight{%d{yyyy:MM:dd HH:mm:ss.SSS}[%-5level][%-10t]%-10.10logger{1.} : %msg}%xEx%n"
     File:
       name: File
-      fileName: target/test-yaml.log
+      fileName: ${filename}
       PatternLayout:
         Pattern: "%highlight{%d{yyyy:MM:dd HH:mm:ss.SSS}[%-5level][%-10t]%-10.10logger{1.} : %msg}%xEx%n"
       Filters:

@@ -1,0 +1,6 @@
+timeout: 10000
+browserScreenSize: 1920x1080
+browserType: CHROME
+webDriverType: LOCAL
+hostRemoteDriver: http://192.168.1.43
+portRemoteDriver: 5556
