@@ -7,18 +7,16 @@ class ApplicationConfigProvider {
 
   private val filePath = "src/test/resources/appConfig.yaml"
 
-  private var userStr: String? = System.getProperty(TafSystemProperties.USER)
-  private var passStr: String? = System.getProperty(TafSystemProperties.PASS)
-
   fun getApplicationConfig(): ApplicationConfig {
 
     val applicationConfig: ApplicationConfig = ReadYamlFile.readConfigFile(filePath, ApplicationConfig::class.java)
 
-    when {
-      userStr != null || passStr != null -> {
-        applicationConfig.user = userStr!!
-        applicationConfig.pass = passStr!!
-      }
+    System.getProperty(TafSystemProperties.USER)?.let { userSystemProperty ->
+      applicationConfig.user = userSystemProperty
+    }
+
+    System.getProperty(TafSystemProperties.PASS)?.let { passSystemProperty ->
+      applicationConfig.pass = passSystemProperty
     }
 
     return applicationConfig

@@ -1,14 +1,16 @@
 package step
 
+import com.codeborne.selenide.Selenide.sleep
 import core.page.LandingPage
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import org.junit.jupiter.api.Assertions
 
-class LandingPageStep : LandingPage() {
+class LandingPageSteps : LandingPage() {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun setOpenLandingPage() {
+  fun openLandingPage() {
     logger.info("Open landing page - http://qa-delivery-es-release.moneyman.ru")
     openPage()
   }

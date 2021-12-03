@@ -1,7 +1,9 @@
 package core.page
 
+import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Selenide.`$`
 import com.codeborne.selenide.Selenide.open
-import core.`object`.ClickButton.clickButton
+import core.`object`.Button.clickButton
 import core.`object`.InputValue.setInputValue
 import core.holder.StaticContextHolder.applicationConfig
 import org.openqa.selenium.By
