@@ -1,5 +1,5 @@
 import com.codeborne.selenide.Selenide.closeWebDriver
-import core.`object`.Browser.verifyCurrentUrl
+import core.`object`.Browser.getCurrentUrl
 import core.`object`.TafSystemProperties
 import core.enum.BrowserType
 import core.provider.DriverConfigSetter
@@ -30,7 +30,7 @@ class CalculatorParametriseTest : BaseUiTest() {
       fillCalculator(sum, days)
       clickRequestRegistration()
     }
-    verifyCurrentUrl(expectedUrl)
+    getCurrentUrl(expectedUrl)
   }
 
   @AfterEach

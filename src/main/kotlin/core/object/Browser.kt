@@ -8,7 +8,7 @@ object Browser {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun verifyCurrentUrl(url: String): String {
+  fun getCurrentUrl(url: String): String {
     logger.info("Verify registration URL - $url")
     return WebDriverRunner.url()
   }

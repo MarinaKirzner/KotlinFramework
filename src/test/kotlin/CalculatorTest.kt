@@ -1,4 +1,4 @@
-import core.`object`.Browser.verifyCurrentUrl
+import core.`object`.Browser.getCurrentUrl
 import core.provider.DriverConfigSetter
 import org.junit.jupiter.api.Test
 import step.LandingPageSteps
@@ -18,6 +18,6 @@ class CalculatorTest : BaseUiTest() {
       fillCalculator(sum, days)
       clickRequestRegistration()
     }
-    verifyCurrentUrl(registrationUrl)
+    getCurrentUrl(registrationUrl)
   }
 }
