@@ -1,10 +1,8 @@
 package step
 
-import com.codeborne.selenide.Selenide.sleep
 import core.page.LandingPage
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import org.junit.jupiter.api.Assertions
 
 class LandingPageSteps : LandingPage() {
 
