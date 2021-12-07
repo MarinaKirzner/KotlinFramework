@@ -1,4 +1,4 @@
-package core.page
+package locators
 
 class CRMCollectorsPageXpath {
   val header = "//div[@class='collapse navbar-collapse']"

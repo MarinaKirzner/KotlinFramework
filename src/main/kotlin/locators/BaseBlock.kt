@@ -1,4 +1,4 @@
-package core.page
+package locators
 
 import org.openqa.selenium.By
 

@@ -1,4 +1,4 @@
-package core.page
+package locators
 
 class CRMCollectorsPage {
   val headerBlock: HeaderBlock by lazy { HeaderBlock() }

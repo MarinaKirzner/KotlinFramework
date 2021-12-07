@@ -1,4 +1,4 @@
-package core.page
+package locators
 
 class CRMCollectorsId {
   val bodyPageId = "main"
