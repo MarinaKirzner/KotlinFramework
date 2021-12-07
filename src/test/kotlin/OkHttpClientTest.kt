@@ -14,6 +14,5 @@ class OkHttpClientTest {
   @Test
   fun `Send a GET request and get AuthUser not empty`() {
     IntegrationHttpClient().makeGetRequest(url)
-    println(IntegrationHttpClient().makeGetRequest(url))
   }
 }
