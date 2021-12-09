@@ -1,18 +1,18 @@
-import core.http.IntegrationHttpClient
+import core.http.httpClient.IntegrationHttpClient
+import core.model.ApplicationConfig
 import core.provider.ApplicationConfigProvider
-import okhttp3.Call
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 class OkHttpClientTest {
 
-  val applicationConfig = ApplicationConfigProvider().getApplicationConfig()
-  val registrationUrl = "qa-delivery-es-release.moneyman.ru/client-area/registration"
-  val url = "https://${applicationConfig.user}:${applicationConfig.pass}@${registrationUrl}"
+  val applicationConfig: ApplicationConfig = ApplicationConfigProvider().getApplicationConfig()
+  val url: String = applicationConfig.getHostWithBasicAuth()
+  val authUser: String = "AuthUser"
 
   @Test
-  fun `Send a GET request and get AuthUser not empty`() {
-    IntegrationHttpClient().makeGetRequest(url)
+  fun `Send a GET request to registration endpoint and verify AuthUser not empty`() {
+    val authUserValue: String? = IntegrationHttpClient().makeGetRequest(url).getValueFromCookies(authUser)
+    Assertions.assertNotNull(authUserValue, "$authUser contains no data")
   }
 }
