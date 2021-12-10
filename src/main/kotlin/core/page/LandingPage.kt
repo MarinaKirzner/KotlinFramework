@@ -2,14 +2,14 @@ package core.page
 
 import core.`object`.Button.clickButton
 import core.`object`.InputValue.setInputValue
-import core.holder.StaticContextHolder.applicationConfig
+import core.provider.ApplicationConfigProvider
 import org.openqa.selenium.By
 import org.openqa.selenium.By.id
 import org.openqa.selenium.By.xpath
 
 class LandingPage : BasePage() {
 
-  override val url: String = "https://${applicationConfig?.user}:${applicationConfig?.pass}@${applicationConfig?.host}"
+  override val url: String = ApplicationConfigProvider().getUrlWithAuthentication()
   private val acceptCookiesButton: By = By.xpath("//button[text()='Aceptar todo']")
   private val creditAmountInput: By = id("loanAmount")
   private val loanDaysInput: By = id("loanDays")

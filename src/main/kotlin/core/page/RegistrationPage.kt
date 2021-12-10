@@ -1,8 +1,9 @@
 import core.page.BasePage
+import core.provider.ApplicationConfigProvider
 
-class RegistrationPage: BasePage() {
+class RegistrationPage : BasePage() {
 
-  override val url: String = "qa-delivery-es-release.moneyman.ru/client-area/#/registration?"
+  override val url: String = ApplicationConfigProvider().getUrlRegistration()
 
   fun getPageUrl(): String {
     return url

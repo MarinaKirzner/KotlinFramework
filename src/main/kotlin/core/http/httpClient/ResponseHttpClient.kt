@@ -16,13 +16,14 @@ class ResponseHttpClient(response: Response) {
 
   fun getValueFromCookies(cookieName: String): String? {
     val cookies: String? = getHeader(response).get(name)
-    cookies.apply {
-      val cookiesList: List<String> = cookies!!.split(delimiter).map { it.trim() }
+    cookies?.apply {
+      val cookiesList: List<String> = cookies.split(delimiter).map { it.trim() }
       val cookiesMap: Map<String, String> = cookiesList.map { it.split(equal) }
         .associate {
           it.first() to it.last()
         }
       return cookiesMap.getValue(cookieName)
     }
+    return cookies
   }
 }
