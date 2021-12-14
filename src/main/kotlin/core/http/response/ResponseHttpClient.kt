@@ -1,11 +1,10 @@
-package core.http.httpClient
+package core.http.response
 
 import okhttp3.Headers
 import okhttp3.Response
 
-class ResponseHttpClient(response: Response) {
+class ResponseHttpClient(val response: Response) {
 
-  val response: Response = response
   private val name = "Set-Cookie"
   val delimiter = ";"
   val equal = "="
@@ -15,6 +14,7 @@ class ResponseHttpClient(response: Response) {
   }
 
   fun getValueFromCookies(cookieName: String): String? {
+    var cookieValue: String? = null
     val cookies: String? = getHeader(response).get(name)
     cookies?.apply {
       val cookiesList: List<String> = cookies.split(delimiter).map { it.trim() }
@@ -22,8 +22,8 @@ class ResponseHttpClient(response: Response) {
         .associate {
           it.first() to it.last()
         }
-      return cookiesMap.getValue(cookieName)
+      cookieValue = cookiesMap.getValue(cookieName)
     }
-    return cookies
+    return cookieValue
   }
 }

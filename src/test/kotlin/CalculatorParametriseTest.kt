@@ -8,11 +8,10 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
 import step.LandingPageSteps
 
-class CalculatorParametriseTest : BaseUiTest() {
+class CalculatorParametriseTest : BaseTest() {
 
   val sum: String = "100"
   val days: String = "7"
-  val registrationUrl = RegistrationPage().getPageUrl()
 
   @ParameterizedTest(
     name = "{arguments}: Submit Landing Page calculator values and Verify redirect on Registration " +
@@ -22,7 +21,6 @@ class CalculatorParametriseTest : BaseUiTest() {
   fun `Submit the landing page calculator values and check the redirection on the registration page in browsers`(
     browserType: BrowserType
   ) {
-    val expectedUrl = registrationUrl
     System.setProperty(TafSystemProperties.BROWSER_TYPE, browserType.name)
     DriverConfigSetter().setDriverConfig()
     LandingPageSteps().apply {
@@ -31,7 +29,7 @@ class CalculatorParametriseTest : BaseUiTest() {
       fillCalculator(sum, days)
       clickRequestRegistration()
     }
-    verifyCurrentUrl(expectedUrl)
+    verifyCurrentUrl(RegistrationPage().registrationUrl)
   }
 
   @AfterEach

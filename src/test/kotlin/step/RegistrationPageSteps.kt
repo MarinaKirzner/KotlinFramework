@@ -1,8 +1,10 @@
+package step
+
 import core.holder.StaticContextHolder
 
-class RegistrationPage {
+class RegistrationPageSteps {
 
   val registrationUrl: String? = StaticContextHolder.applicationConfig?.run {
-    getUrlWithSelectedEndpointWithBasicAuth(registrationUrl)
+    getUrlWithSelectedEndpoint(registrationEndPoint)
   }
 }

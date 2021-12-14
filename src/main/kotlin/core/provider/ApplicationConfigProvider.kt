@@ -18,29 +18,4 @@ class ApplicationConfigProvider {
     }
     return applicationConfig
   }
-
-  fun getHostUrl(): String {
-    val host = "https://${applicationConfig.host}"
-    return host
-  }
-
-  fun getUrlRegistration(): String {
-    val host = "https://${applicationConfig.host}${applicationConfig.registrationUrl}"
-    return host
-  }
-
-  fun getUrlWithAuthentication(): String {
-    val urlWithAuthentication = "https://${applicationConfig.user}" +
-        ":${applicationConfig.pass}" +
-        "@${applicationConfig.host}"
-    return urlWithAuthentication
-  }
-
-  fun getEndPointUrlWithAuthentication(): String {
-    val urlRegistrationEndpoint = "https://${applicationConfig.user}" +
-        ":${applicationConfig.pass}" +
-        "@${applicationConfig.host}" +
-        "${applicationConfig.registrationEndPoint}"
-    return urlRegistrationEndpoint
-  }
 }

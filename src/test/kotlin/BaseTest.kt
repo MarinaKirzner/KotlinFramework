@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-abstract class BaseUiTest {
+abstract class BaseTest {
 
   @BeforeAll
   fun configContext() {
