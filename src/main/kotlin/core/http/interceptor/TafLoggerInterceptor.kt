@@ -7,7 +7,7 @@ import okhttp3.internal.toHeaderList
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
-class BaseLoggerInterceptor : Interceptor {
+class TafLoggerInterceptor : Interceptor {
 
   private val logger: Logger = LogManager.getLogger()
 

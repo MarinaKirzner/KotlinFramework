@@ -4,7 +4,7 @@ import core.holder.StaticContextHolder
 
 class RegistrationPageSteps {
 
-  val registrationUrl: String? = StaticContextHolder.applicationConfig?.run {
+  val registrationUrl: String = StaticContextHolder.getConfig().run {
     getUrlWithSelectedEndpoint(registrationEndPoint)
   }
 }

@@ -1,8 +1,8 @@
 package core.http.httpClient
 
 import core.http.interceptor.BasicAuthInterceptor
-import core.http.interceptor.BaseLoggerInterceptor
 import core.http.interceptor.StatusCodeResponse
+import core.http.interceptor.TafLoggerInterceptor
 import core.http.response.ResponseHttpClient
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -13,7 +13,7 @@ class IntegrationHttpClient : HttpClient {
   private val client: OkHttpClient = OkHttpClient().newBuilder()
     .addInterceptor(BasicAuthInterceptor())
     .addInterceptor(StatusCodeResponse())
-    .addInterceptor(BaseLoggerInterceptor())
+    .addInterceptor(TafLoggerInterceptor())
     .build()
 
   override fun getClient(): OkHttpClient {
