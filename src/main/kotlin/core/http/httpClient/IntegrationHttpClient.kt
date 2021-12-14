@@ -20,7 +20,7 @@ class IntegrationHttpClient : HttpClient {
     return client
   }
 
-  override fun makeGetRequest(url: String?): ResponseHttpClient {
+  override fun makeGetRequest(url: String): ResponseHttpClient {
     val request: Request = Request.Builder().get().url(url.toString()).build()
     val response: Response = getClient().newCall(request).execute()
     return ResponseHttpClient(response)
