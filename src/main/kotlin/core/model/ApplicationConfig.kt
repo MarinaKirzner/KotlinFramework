@@ -14,18 +14,9 @@ data class ApplicationConfig(
 
   fun getUrlWithSelectedEndpointWithBasicAuth(urlEndpoint: String) = "${getBaseUrlWithAuth()}${urlEndpoint}"
 
-  fun getUrlWithSelectedEndpoint(urlEndpoint: String): String {
-    val urlRegistrationEndpoint = "$PROTOCOL_HTTPS${host}${urlEndpoint}"
-    return urlRegistrationEndpoint
-  }
+  fun getUrlWithSelectedEndpoint(urlEndpoint: String) = "$PROTOCOL_HTTPS${host}${urlEndpoint}"
 
-  fun getBaseUrlWithAuth(): String {
-    val urlWithAuthentication = "$PROTOCOL_HTTPS${user}:${pass}@${host}"
-    return urlWithAuthentication
-  }
+  fun getBaseUrlWithAuth() = "$PROTOCOL_HTTPS${user}:${pass}@${host}"
 
-  fun getBaseUrl(): String {
-    val urlWithAuthentication = "$PROTOCOL_HTTPS${host}"
-    return urlWithAuthentication
-  }
+  fun getBaseUrl() = "$PROTOCOL_HTTPS${host}"
 }
