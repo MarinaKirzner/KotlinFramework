@@ -6,9 +6,10 @@ import core.model.ApplicationConfig
 class ApplicationConfigProvider {
 
   private val filePath = "src/test/resources/appConfig.yaml"
+  private val applicationConfig: ApplicationConfig =
+    ReadYamlFile.readConfigFile(filePath, ApplicationConfig::class.java)
 
   fun getApplicationConfig(): ApplicationConfig {
-    val applicationConfig: ApplicationConfig = ReadYamlFile.readConfigFile(filePath, ApplicationConfig::class.java)
     System.getProperty(TafSystemProperties.USER)?.let { userSystemProperty ->
       applicationConfig.user = userSystemProperty
     }

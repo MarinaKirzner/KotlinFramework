@@ -2,18 +2,16 @@ import com.codeborne.selenide.Selenide.closeWebDriver
 import core.`object`.Browser.verifyCurrentUrl
 import core.`object`.TafSystemProperties
 import core.enum.BrowserType
-import core.holder.StaticContextHolder.applicationConfig
 import core.provider.DriverConfigSetter
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
 import step.LandingPageSteps
 
-class CalculatorParametriseTest : BaseUiTest() {
+class CalculatorParametriseTest : BaseTest() {
 
-  val sum: String = "100"
-  val days: String = "7"
-  val registrationUrl = RegistrationPage().getPageUrl()
+  private val sum: String = "100"
+  private val days: String = "7"
 
   @ParameterizedTest(
     name = "{arguments}: Submit Landing Page calculator values and Verify redirect on Registration " +
@@ -23,7 +21,6 @@ class CalculatorParametriseTest : BaseUiTest() {
   fun `Submit the landing page calculator values and check the redirection on the registration page in browsers`(
     browserType: BrowserType
   ) {
-    val expectedUrl = "https://${applicationConfig?.user}:${applicationConfig?.pass}@${registrationUrl}"
     System.setProperty(TafSystemProperties.BROWSER_TYPE, browserType.name)
     DriverConfigSetter().setDriverConfig()
     LandingPageSteps().apply {
@@ -32,7 +29,7 @@ class CalculatorParametriseTest : BaseUiTest() {
       fillCalculator(sum, days)
       clickRequestRegistration()
     }
-    verifyCurrentUrl(expectedUrl)
+    verifyCurrentUrl(RegistrationPage().registrationUrl)
   }
 
   @AfterEach
