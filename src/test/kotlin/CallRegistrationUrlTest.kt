@@ -5,7 +5,7 @@ import step.RegistrationPageSteps
 
 class CallRegistrationUrlTest : BaseTest() {
 
-  val authUser: String = "AuthUser"
+  private val authUser: String = "AuthUser"
 
   @Test
   fun `Send a GET request to registration endpoint and verify AuthUser not empty`() {

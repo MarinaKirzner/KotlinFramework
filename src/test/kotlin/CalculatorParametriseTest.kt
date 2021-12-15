@@ -10,8 +10,8 @@ import step.LandingPageSteps
 
 class CalculatorParametriseTest : BaseTest() {
 
-  val sum: String = "100"
-  val days: String = "7"
+  private val sum: String = "100"
+  private val days: String = "7"
 
   @ParameterizedTest(
     name = "{arguments}: Submit Landing Page calculator values and Verify redirect on Registration " +

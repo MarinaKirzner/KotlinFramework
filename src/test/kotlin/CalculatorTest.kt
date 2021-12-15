@@ -5,8 +5,8 @@ import step.LandingPageSteps
 
 class CalculatorTest : BaseTest() {
 
-  val sum: String = "100"
-  val days: String = "7"
+  private val sum: String = "100"
+  private val days: String = "7"
 
   @Test
   fun `Submit Landing Page calculator values and verify redirect on Registration Page`() {
