@@ -1,14 +1,12 @@
 package core.model
 
-import core.api.crm.model.CrmUserRequest
-
 data class ApplicationConfig(
   var user: String,
   var pass: String,
   val host: String,
   val registrationUrl: String,
   val registrationEndPoint: String,
-  val crmUserConfig: CrmUserRequest
+  val crmUserConfig: CrmUserConfig
 ) {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"

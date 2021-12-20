@@ -5,13 +5,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class LoginApiCRMTest : BaseTest() {
+class LoginApiCrmTest : BaseTest() {
 
-  private val authUser: String = "AuthUser"
+  private val authUserCookieName: String = "AuthUser"
 
   @Test
   fun `Login to CRM using Retrofit`() {
-    val authUserValue = CrmController().authCrm().getValueFromCookies(authUser)
-    Assertions.assertNotNull(authUserValue, "$authUser contains no data")
+    val expectedAuthUserValue = CrmController().authCrm().getValueFromCookies(authUserCookieName)
+    Assertions.assertNotNull(expectedAuthUserValue, "$authUserCookieName contains no data")
   }
 }
