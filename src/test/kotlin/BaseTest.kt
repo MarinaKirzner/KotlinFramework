@@ -1,5 +1,7 @@
-import core.holder.StaticContextHolder
-import core.holder.StaticContextHolder.clearContext
+import core.holder.dynamicContext.DynamicContext
+import core.holder.dynamicContext.DynamicContextHolder
+import core.holder.staticContext.StaticContextHolder
+import core.holder.staticContext.StaticContextHolder.clearContext
 import core.provider.ApplicationConfigProvider
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
@@ -11,6 +13,7 @@ abstract class BaseTest {
   @BeforeAll
   fun configContext() {
     StaticContextHolder.applicationConfig = ApplicationConfigProvider().getApplicationConfig()
+    DynamicContextHolder.dynamicContext = DynamicContext()
   }
 
   @AfterAll

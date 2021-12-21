@@ -8,9 +8,9 @@ import retrofit2.Call
 
 class CrmController() {
   fun authCrm(): ResponseHttpClient {
-    val callAuthUser: Call<CrmUserResponse> = RetrofitConfig().addRetrofit()
+    val callUser: Call<CrmUserResponse> = RetrofitConfig().addRetrofit()
       .postCrmUserConfig(CrmUserRequestBuilder().addCrmUserRequestConfig())
-    val postAuthUser: okhttp3.Response = callAuthUser.execute().raw()
-    return ResponseHttpClient(postAuthUser)
+    val postResponse: okhttp3.Response = callUser.execute().raw()
+    return ResponseHttpClient(postResponse)
   }
 }

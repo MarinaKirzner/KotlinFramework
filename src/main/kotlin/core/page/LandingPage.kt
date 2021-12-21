@@ -2,7 +2,7 @@ package core.page
 
 import core.`object`.Button.clickButton
 import core.`object`.InputValue.setInputValue
-import core.holder.StaticContextHolder
+import core.holder.staticContext.StaticContextHolder
 import org.openqa.selenium.By
 import org.openqa.selenium.By.id
 import org.openqa.selenium.By.xpath

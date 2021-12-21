@@ -1,6 +1,6 @@
 package core.http.httpClient
 
-import core.holder.StaticContextHolder.getConfig
+import core.holder.staticContext.StaticContextHolder.getConfig
 import core.http.interceptor.BasicAuthInterceptor
 import core.http.interceptor.StatusCodeResponse
 import core.http.interceptor.TafLoggerInterceptor

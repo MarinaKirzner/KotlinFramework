@@ -1,6 +1,5 @@
 package core.http.interceptor
 
-import core.holder.StaticContextHolder
 import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Request

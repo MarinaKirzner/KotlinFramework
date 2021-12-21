@@ -1,7 +1,4 @@
 import core.api.crm.controller.CrmController
-import core.holder.StaticContextHolder
-import core.provider.ApplicationConfigProvider
-import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

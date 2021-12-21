@@ -1,7 +1,7 @@
 package core.api.crm.builder
 
 import core.api.crm.model.CrmUserRequest
-import core.holder.StaticContextHolder.getConfig
+import core.holder.staticContext.StaticContextHolder.getConfig
 
 class CrmUserRequestBuilder {
   fun addCrmUserRequestConfig(): CrmUserRequest {

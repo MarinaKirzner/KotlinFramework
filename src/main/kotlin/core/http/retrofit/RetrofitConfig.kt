@@ -1,7 +1,7 @@
 package core.http.retrofit
 
 import core.api.crm.service.CrmService
-import core.holder.StaticContextHolder
+import core.holder.staticContext.StaticContextHolder
 import core.http.httpClient.IntegrationHttpClient
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

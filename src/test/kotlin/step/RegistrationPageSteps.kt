@@ -1,6 +1,6 @@
 package step
 
-import core.holder.StaticContextHolder
+import core.holder.staticContext.StaticContextHolder
 
 class RegistrationPageSteps {
 
