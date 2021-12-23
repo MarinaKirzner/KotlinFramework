@@ -1,30 +1,14 @@
 import core.api.crm.controller.CrmController
 import core.holder.dynamicContext.DynamicContextHolder
-import core.observer.ObserverCookieValue
-import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertAll
 
-class ObserverCookieValueTest: BaseTest() {
-
-  private val authUserCookieName: String = "AuthUser"
+class ObserverCookieValueTest : BaseTest() {
 
   @Test
-  fun `Verify cookie and Observer cookie AuthUser token`() {
-
-    DynamicContextHolder.getDynamicConfig().sessionContext.serviceResponse = CrmController().authCrm()
-
-    assertAll(
-      {
-        assertNotNull(
-          //check cookie not null , "Cookies not received"
-        )
-      },
-      {
-        assertNotNull(
-          //check the cookie is in dynamicContext , "No cookie appeared in the dynamic context"
-        )
-      }
-    )
+  fun `Add observer to validate AuthUser in a dynamic context and verify AuthUser cookie is not empty`() {
+    CrmController().authCrm()
+    val expectedAuthUserValue = DynamicContextHolder.getDynamicConfig().sessionContext.authUserValue
+    Assertions.assertNotNull(expectedAuthUserValue, "${expectedAuthUserValue} contains no data")
   }
 }
