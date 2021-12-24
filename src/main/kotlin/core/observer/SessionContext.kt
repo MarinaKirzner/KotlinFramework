@@ -5,7 +5,6 @@ import core.http.response.ResponseHttpClient
 class SessionContext : Observable {
 
   var authUserValue: String? = null
-
   var observers: ArrayList<Observer> = ArrayList()
 
   init {
