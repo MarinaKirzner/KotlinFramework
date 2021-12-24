@@ -10,14 +10,16 @@ import core.http.retrofit.RetrofitServiceBuilder
 import retrofit2.Call
 import retrofit2.Response
 
-class CrmController() {
+class CrmController {
+
+  private val crmUserRequest: CrmUserRequest = CrmUserRequestBuilder().addCrmUserRequestConfig()
+  private val crmUserService: CrmService = RetrofitServiceBuilder().buildService(serviceClass = CrmService::class.java)
+
   fun authCrm(): ResponseHttpClient {
-    val crmUserRequest: CrmUserRequest = CrmUserRequestBuilder().addCrmUserRequestConfig()
-    val buildCrmUserService: CrmService = RetrofitServiceBuilder().buildService(serviceClass = CrmService::class.java)
-    val callCrmUser: Call<CrmUserResponse> = buildCrmUserService.postCrmUserConfig(crmUserRequest)
+    val callCrmUser: Call<CrmUserResponse> = crmUserService.postCrmUserConfig(crmUserRequest)
     val postResponse: Response<CrmUserResponse> = callCrmUser.execute()
-    val responseController = ResponseHttpClient(postResponse.raw())
-    DynamicContextHolder.getDynamicConfig().sessionContext.sessionResponse = responseController
-    return responseController
+    val responseHttpClient = ResponseHttpClient(postResponse.raw())
+    DynamicContextHolder.getDynamicConfig().sessionContext.sessionResponse = responseHttpClient
+    return responseHttpClient
   }
 }

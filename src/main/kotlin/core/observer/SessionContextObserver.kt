@@ -5,9 +5,9 @@ class SessionContextObserver(val sessionContext: SessionContext) : Observer {
   private val authUserCookieName = "AuthUser"
 
   override fun update() {
-    val sessionAuthUser = sessionContext.sessionResponse?.getValueFromCookies(authUserCookieName)
-    if (sessionAuthUser != null) {
-      sessionContext.authUserValue = sessionAuthUser
+    val sessionAuthUser: String? = sessionContext.sessionResponse?.getValueFromCookies(authUserCookieName)
+    sessionAuthUser?.let {
+      sessionContext.authUserCookieValue = sessionAuthUser
     }
   }
 }
