@@ -14,6 +14,8 @@ val log4jCore: String by project
 val selenide: String by project
 val okhttp3: String by project
 val okhttp3LoggingInterceptor: String by project
+val retrofit: String by project
+val retrofitConverterGson: String by project
 
 plugins {
   kotlin("jvm") version "1.5.31"
@@ -49,7 +51,8 @@ dependencies {
   implementation ("com.codeborne:selenide:$selenide")
   implementation("com.squareup.okhttp3:okhttp:$okhttp3")
   implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3LoggingInterceptor")
-
+  implementation("com.squareup.retrofit2:retrofit:$retrofit")
+  implementation("com.squareup.retrofit2:converter-gson:$retrofitConverterGson")
 }
 
 tasks.test {

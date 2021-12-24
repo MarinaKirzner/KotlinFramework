@@ -5,9 +5,9 @@ data class ApplicationConfig(
   var pass: String,
   val host: String,
   val registrationUrl: String,
-  val registrationEndPoint: String
+  val registrationEndPoint: String,
+  val crmUserConfig: CrmUserConfig
 ) {
-
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
   }

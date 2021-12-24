@@ -1,4 +1,4 @@
-package core.holder
+package core.holder.staticContext
 
 import core.model.ApplicationConfig
 

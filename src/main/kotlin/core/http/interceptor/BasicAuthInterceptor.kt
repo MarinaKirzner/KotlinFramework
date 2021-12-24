@@ -1,19 +1,17 @@
 package core.http.interceptor
 
-import core.holder.StaticContextHolder
+import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class BasicAuthInterceptor : Interceptor {
+class BasicAuthInterceptor(user: String, password: String) : Interceptor {
 
-  val config = StaticContextHolder.getConfig()
+  private val credentials: String = Credentials.basic(user, password)
 
   override fun intercept(chain: Interceptor.Chain): Response {
     val request: Request = chain.request()
-    val authRequest: Request = request.newBuilder()
-      .header(config.user, config.pass)
-      .build()
+    val authRequest: Request = request.newBuilder().header("Authorization", credentials).build()
     return chain.proceed(authRequest)
   }
 }

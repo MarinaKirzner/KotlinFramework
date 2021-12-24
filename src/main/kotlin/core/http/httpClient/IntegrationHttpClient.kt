@@ -1,5 +1,6 @@
 package core.http.httpClient
 
+import core.holder.staticContext.StaticContextHolder.getConfig
 import core.http.interceptor.BasicAuthInterceptor
 import core.http.interceptor.StatusCodeResponse
 import core.http.interceptor.TafLoggerInterceptor
@@ -10,8 +11,11 @@ import okhttp3.Response
 
 class IntegrationHttpClient : HttpClient {
 
+  private val pass: String = getConfig().pass
+  private val user: String = getConfig().user
+
   private val client: OkHttpClient = OkHttpClient().newBuilder()
-    .addInterceptor(BasicAuthInterceptor())
+    .addInterceptor(BasicAuthInterceptor(user, pass))
     .addInterceptor(StatusCodeResponse())
     .addInterceptor(TafLoggerInterceptor())
     .build()

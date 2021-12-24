@@ -9,9 +9,9 @@ class CallRegistrationUrlTest : BaseTest() {
 
   @Test
   fun `Send a GET request to registration endpoint and verify AuthUser not empty`() {
-    val authUserValue: String? = IntegrationHttpClient()
+    val expectedAuthUserValue: String? = IntegrationHttpClient()
       .makeGetRequest(RegistrationPageSteps().registrationUrl)
       .getValueFromCookies(authUser)
-    Assertions.assertNotNull(authUserValue, "$authUser contains no data")
+    Assertions.assertNotNull(expectedAuthUserValue, "$authUser contains no data")
   }
 }
