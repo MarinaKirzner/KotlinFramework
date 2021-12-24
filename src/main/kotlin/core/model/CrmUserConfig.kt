@@ -5,3 +5,5 @@ data class CrmUserConfig(
   val password: String,
   val captcha: String
 )
+
+
