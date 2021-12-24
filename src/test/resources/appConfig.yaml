@@ -1,3 +1,14 @@
-user: test
-pass: test
-host: qa-delivery-es-release.moneyman.ru
+user: moneyman
+pass: 1005
+host: es-bravo.moneyman.ru
+registrationUrl: /client-area/#/registration?
+registrationEndPoint: /client-area/registration/
+#mmes-PR-1109.idfaws.com
+#mmes-master.idfaws.com
+#es-bravo.moneyman.ru
+
+#CRM API Client
+crmUserConfig:
+  login: admmin
+  password: nimda2012
+  captcha: 11111
