@@ -1,4 +1,4 @@
-package core.holder.observer
+package core.observer
 
 class SessionContextObserver(val sessionContext: SessionContext) : Observer {
 

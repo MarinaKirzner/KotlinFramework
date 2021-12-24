@@ -1,4 +1,4 @@
-package core.holder.observer
+package core.observer
 
 interface Observable {
   fun notifyObservers()
