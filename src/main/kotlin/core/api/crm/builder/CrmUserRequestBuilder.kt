@@ -1,11 +1,11 @@
 package core.api.crm.builder
 
 import core.api.crm.model.CrmUserRequest
-import core.holder.staticContext.StaticContextHolder.getConfig
+import core.staticContextConfig
 
 class CrmUserRequestBuilder {
   fun addCrmUserRequestConfig(): CrmUserRequest {
-    val configRequest: CrmUserRequest = with(getConfig().crmUserConfig) {
+    val configRequest: CrmUserRequest = with(staticContextConfig().crmUserConfig) {
       CrmUserRequest(login, password, captcha)
     }
     return configRequest

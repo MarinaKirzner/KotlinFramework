@@ -1,8 +1,8 @@
-import core.holder.staticContext.StaticContextHolder
+import core.staticContextConfig
 
 class RegistrationPage {
 
-  val registrationUrl: String = StaticContextHolder.getConfig().run {
+  val registrationUrl: String = staticContextConfig().run {
     getUrlWithSelectedEndpointWithBasicAuth(registrationUrl)
   }
 }
