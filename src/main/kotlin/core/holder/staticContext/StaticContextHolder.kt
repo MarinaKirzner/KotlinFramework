@@ -1,5 +1,6 @@
 package core.holder.staticContext
 
+import core.holder.ContextHolder
 import core.model.ApplicationConfig
 
 object StaticContextHolder : ContextHolder {

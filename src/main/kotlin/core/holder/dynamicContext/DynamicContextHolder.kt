@@ -1,10 +1,12 @@
 package core.holder.dynamicContext
 
-object DynamicContextHolder : DynamicHolder {
+import core.holder.ContextHolder
+
+object DynamicContextHolder : ContextHolder {
 
   var dynamicContext: DynamicContext? = null
 
-  override fun getDynamicConfig(): DynamicContext {
+  override fun getConfig(): DynamicContext {
     return dynamicContext ?: throw IllegalStateException("Context not initialisation")
   }
 

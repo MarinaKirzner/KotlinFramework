@@ -1,7 +1,6 @@
 import core.holder.dynamicContext.DynamicContext
 import core.holder.dynamicContext.DynamicContextHolder
 import core.holder.staticContext.StaticContextHolder
-import core.holder.staticContext.StaticContextHolder.clearContext
 import core.provider.ApplicationConfigProvider
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
@@ -18,6 +17,7 @@ abstract class BaseTest {
 
   @AfterAll
   fun clearUp() {
-    clearContext()
+    StaticContextHolder.clearContext()
+    DynamicContextHolder.clearContext()
   }
 }

@@ -1,5 +1,7 @@
 package core.model
 
+import core.holder.ContextType
+
 data class ApplicationConfig(
   var user: String,
   var pass: String,
@@ -7,7 +9,7 @@ data class ApplicationConfig(
   val registrationUrl: String,
   val registrationEndPoint: String,
   val crmUserConfig: CrmUserConfig
-) {
+) : ContextType {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
   }

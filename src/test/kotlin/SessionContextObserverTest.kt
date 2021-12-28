@@ -8,7 +8,7 @@ class SessionContextObserverTest : BaseTest() {
   @Test
   fun `Verify that AuthUser cookie value set in SessionContext when make CRM authorisation service call`() {
     CrmController().authCrm()
-    val expectedAuthUserValue = DynamicContextHolder.getDynamicConfig().sessionContext.authUserCookieValue
+    val expectedAuthUserValue = DynamicContextHolder.getConfig().sessionContext.authUserCookieValue
     Assertions.assertNotNull(expectedAuthUserValue, "$expectedAuthUserValue doesn't set in session context")
   }
 }
