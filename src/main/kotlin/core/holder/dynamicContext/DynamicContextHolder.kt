@@ -1,16 +1,7 @@
 package core.holder.dynamicContext
 
-import core.holder.ContextHolder
+import core.holder.TafContextHolder
 
-object DynamicContextHolder : ContextHolder {
-
-  var dynamicContext: DynamicContext? = null
-
-  override fun getConfig(): DynamicContext {
-    return dynamicContext ?: throw IllegalStateException("Context not initialisation")
-  }
-
-  override fun clearContext() {
-    dynamicContext == null
-  }
+object DynamicContextHolder : TafContextHolder<DynamicContext> {
+  override var context: DynamicContext? = null
 }

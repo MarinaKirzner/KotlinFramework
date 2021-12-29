@@ -1,4 +1,4 @@
-import core.api.crm.controller.CrmController
+import core.responseHttpClient
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -8,7 +8,7 @@ class LoginApiCrmTest : BaseTest() {
 
   @Test
   fun `Login to CRM using Retrofit`() {
-    val expectedAuthUserValue = CrmController().authCrm().getValueFromCookies(authUserCookieName)
+    val expectedAuthUserValue = responseHttpClient().getValueFromCookies(authUserCookieName)
     Assertions.assertNotNull(expectedAuthUserValue, "$authUserCookieName contains no data")
   }
 }

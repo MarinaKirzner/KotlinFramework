@@ -1,9 +1,11 @@
 package core
 
+import core.api.crm.controller.CrmController
 import core.holder.dynamicContext.DynamicContextHolder
+import core.holder.observer.SessionContext
 import core.holder.staticContext.StaticContextHolder
+import core.http.response.ResponseHttpClient
 import core.model.ApplicationConfig
-import core.observer.SessionContext
 
 val staticContextConfig: () -> ApplicationConfig = {
   StaticContextHolder.getConfig()
@@ -11,4 +13,8 @@ val staticContextConfig: () -> ApplicationConfig = {
 
 val sessionContext: () -> SessionContext = {
   DynamicContextHolder.getConfig().sessionContext
+}
+
+val responseHttpClient: () -> ResponseHttpClient = {
+  CrmController().authCrm()
 }

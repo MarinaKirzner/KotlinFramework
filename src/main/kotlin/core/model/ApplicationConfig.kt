@@ -1,6 +1,6 @@
 package core.model
 
-import core.holder.ContextType
+import core.holder.TafContext
 
 data class ApplicationConfig(
   var user: String,
@@ -9,7 +9,7 @@ data class ApplicationConfig(
   val registrationUrl: String,
   val registrationEndPoint: String,
   val crmUserConfig: CrmUserConfig
-) : ContextType {
+) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
   }

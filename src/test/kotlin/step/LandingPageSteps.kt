@@ -1,8 +1,6 @@
 package step
 
 import core.page.LandingPage
-import org.apache.logging.log4j.LogManager
-import org.apache.logging.log4j.Logger
 
 class LandingPageSteps {
 

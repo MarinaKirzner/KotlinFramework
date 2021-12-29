@@ -11,8 +11,8 @@ abstract class BaseTest {
 
   @BeforeAll
   fun configContext() {
-    StaticContextHolder.applicationConfig = ApplicationConfigProvider().getApplicationConfig()
-    DynamicContextHolder.dynamicContext = DynamicContext()
+    StaticContextHolder.context = ApplicationConfigProvider().getApplicationConfig()
+    DynamicContextHolder.context = DynamicContext()
   }
 
   @AfterAll
