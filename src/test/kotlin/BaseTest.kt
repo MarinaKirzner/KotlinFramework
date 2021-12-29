@@ -1,7 +1,7 @@
-import core.holder.dynamicContext.DynamicContext
-import core.holder.dynamicContext.DynamicContextHolder
-import core.holder.staticContext.StaticContextHolder
-import core.provider.ApplicationConfigProvider
+import core.context.constant.ApplicationConfigProvider
+import core.context.constant.StaticContextHolder
+import core.context.dynamic.DynamicContext
+import core.context.dynamic.DynamicContextHolder
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance

@@ -1,5 +1,5 @@
-import core.`object`.Browser.verifyCurrentUrl
-import core.provider.DriverConfigSetter
+import core.ui.driver.setter.DriverConfigSetter
+import core.ui.element.Browser.verifyCurrentUrl
 import org.junit.jupiter.api.Test
 import step.LandingPageSteps
 

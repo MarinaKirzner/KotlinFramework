@@ -1,6 +1,6 @@
 package step
 
-import core.page.LandingPage
+import core.ui.page.LandingPage
 
 class LandingPageSteps {
 
