@@ -1,7 +1,7 @@
 package core.context.observer
 
 import core.context.dynamic.SessionContext
-import core.sessionContext
+import core.context.sessionContext
 
 class SessionContextObserver(val sessionContext: SessionContext) : Observer {
 

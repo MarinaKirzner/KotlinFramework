@@ -6,7 +6,7 @@ import core.api.crm.model.CrmUserResponse
 import core.api.crm.service.CrmService
 import core.http.response.HttpClientResponse
 import core.retrofit.RetrofitServiceBuilder
-import core.sessionContext
+import core.context.sessionContext
 import retrofit2.Call
 import retrofit2.Response
 

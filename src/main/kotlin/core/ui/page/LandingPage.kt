@@ -1,6 +1,6 @@
 package core.ui.page
 
-import core.staticContextConfig
+import core.context.constant.StaticContextHolder.getConfig
 import core.ui.element.Button.clickButton
 import core.ui.element.Input.setInputValue
 import org.openqa.selenium.By
@@ -9,8 +9,8 @@ import org.openqa.selenium.By.xpath
 
 class LandingPage : BasePage() {
 
-  override val url: String = staticContextConfig().getBaseUrlWithAuth()
-  private val acceptCookiesButton: By = By.xpath("//button[text()='Aceptar todo']")
+  override val url: String = getConfig().getBaseUrlWithAuth()
+  private val acceptCookiesButton: By = xpath("//button[text()='Aceptar todo']")
   private val creditAmountInput: By = id("loanAmount")
   private val loanDaysInput: By = id("loanDays")
   private val requestRegistrationButton: By = xpath("//a[@class='btn btn_red mainCalculator__submit']")

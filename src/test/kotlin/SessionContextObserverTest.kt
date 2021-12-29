@@ -1,5 +1,5 @@
-import core.httpClientResponse
-import core.sessionContext
+import core.context.httpClientResponse
+import core.context.sessionContext
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

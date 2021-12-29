@@ -1,4 +1,4 @@
-import core.httpClientResponse
+import core.context.httpClientResponse
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

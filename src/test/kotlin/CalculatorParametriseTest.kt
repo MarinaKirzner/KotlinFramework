@@ -3,6 +3,7 @@ import core.taf_property.TafSystemProperties
 import core.ui.driver.BrowserType
 import core.ui.driver.setter.DriverConfigSetter
 import core.ui.element.Browser.verifyCurrentUrl
+import core.ui.page.RegistrationPage
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
