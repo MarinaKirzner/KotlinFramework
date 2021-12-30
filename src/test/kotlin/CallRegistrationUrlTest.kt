@@ -1,4 +1,4 @@
-import core.http.httpClient.IntegrationHttpClient
+import core.http.client.IntegrationHttpClient
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import step.RegistrationPageSteps

@@ -1,10 +1,10 @@
 package step
 
-import core.holder.staticContext.StaticContextHolder
+import core.context.constant.StaticContextHolder.getConfig
 
 class RegistrationPageSteps {
 
-  val registrationUrl: String = StaticContextHolder.getConfig().run {
+  val registrationUrl: String = getConfig().run {
     getUrlWithSelectedEndpoint(registrationEndPoint)
   }
 }

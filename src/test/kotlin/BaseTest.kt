@@ -1,8 +1,7 @@
-import core.holder.dynamicContext.DynamicContext
-import core.holder.dynamicContext.DynamicContextHolder
-import core.holder.staticContext.StaticContextHolder
-import core.holder.staticContext.StaticContextHolder.clearContext
-import core.provider.ApplicationConfigProvider
+import core.context.constant.ApplicationConfigProvider
+import core.context.constant.StaticContextHolder
+import core.context.dynamic.DynamicContext
+import core.context.dynamic.DynamicContextHolder
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
@@ -12,12 +11,13 @@ abstract class BaseTest {
 
   @BeforeAll
   fun configContext() {
-    StaticContextHolder.applicationConfig = ApplicationConfigProvider().getApplicationConfig()
-    DynamicContextHolder.dynamicContext = DynamicContext()
+    StaticContextHolder.context = ApplicationConfigProvider().getApplicationConfig()
+    DynamicContextHolder.context = DynamicContext()
   }
 
   @AfterAll
   fun clearUp() {
-    clearContext()
+    StaticContextHolder.clearContext()
+    DynamicContextHolder.clearContext()
   }
 }
