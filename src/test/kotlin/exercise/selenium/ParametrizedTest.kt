@@ -9,16 +9,6 @@ import java.util.concurrent.TimeUnit
 
 class ParametrizedTest {
 
-//  companion object{
-//    private val driver: WebDriver = ChromeDriver()
-//  }
-//
-//  @BeforeEach
-//  fun `SetDriver`(){
-//    driver.manage().window().maximize()
-//    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
-//  }
-
   @ParameterizedTest
   @ValueSource(strings = arrayOf("selenium", "home", "junit5"))
   fun `Parametrized Test`(writeText: String) {

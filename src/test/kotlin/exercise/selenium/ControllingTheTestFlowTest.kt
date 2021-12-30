@@ -16,20 +16,10 @@ class ControllingTheTestFlowTest {
   }
 
   @BeforeEach
-  fun `SetDriver`() {
+  fun setDriver() {
     driver.manage().window().maximize()
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
   }
-
-//  @Test
-//  fun `Waiting for all jQuery processes to finish`(){
-//
-//
-//    fun `Apply`(driver): Boolean {
-//      val js = (JavascriptExecutor) driver
-//      return
-//    }
-//
 
   @Test
   fun `New tab Open and Close`() {
@@ -82,7 +72,7 @@ class ControllingTheTestFlowTest {
   }
 
   @AfterEach
-  fun `CloseBrowser`() {
+  fun closeBrowser() {
     driver.quit()
   }
 }
