@@ -19,7 +19,7 @@ class CrmController {
     val callCrmUser: Call<CrmUserResponse> = crmUserService.postCrmUserConfig(crmUserRequest)
     val postResponse: Response<CrmUserResponse> = callCrmUser.execute()
     val httpClientResponse = HttpClientResponse(postResponse.raw())
-    sessionContext().sessionResponse = httpClientResponse
+    sessionContext.sessionResponse = httpClientResponse
     return httpClientResponse
   }
 }
