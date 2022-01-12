@@ -22,7 +22,7 @@ class LoginApiCrmWireMockTest: BaseTest() {
   private fun getMappingStub(): MappingBuilder =
     post(WireMock.urlMatching("/secure/rest/sign/in/"))
       .atPriority(1)
-      .withName("MarinaStub")
+      .withName("LoggingToCrmStub")
       .willReturn(
         aResponse()
           .withStatus(200)
