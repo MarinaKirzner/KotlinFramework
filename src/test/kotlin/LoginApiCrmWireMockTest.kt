@@ -1,36 +1,35 @@
-import com.github.tomakehurst.wiremock.client.MappingBuilder
-import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.client.WireMock.aResponse
-import com.github.tomakehurst.wiremock.client.WireMock.post
 import core.api.crm.controller.CrmController
+import core.api.mock.controller.WireMockController
+import core.api.mock.model.CrmMockConfig
+import core.context.constant.StaticContextHolder
 import core.http.response.HttpClientResponse
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class LoginApiCrmWireMockTest: BaseTest() {
+class LoginApiCrmWireMockTest : BaseTest() {
 
-  @Test
-  fun `Start WireMock and verify the AuthUser cookie is set when logging into CRM with incorrect credentials`(){
-    val wireMockClient = WireMock("localhost", 8080)
-    wireMockClient.register(getMappingStub())
-    val response: HttpClientResponse = CrmController().authCrm()
-    val expectedAuthUserValue: String? = response.getValueFromCookies("AuthUser")
-    Assertions.assertNotNull(expectedAuthUserValue, "$expectedAuthUserValue contains no data")
-    println(expectedAuthUserValue)
+  private val authUserValue: String = "AuthUser"
+  private val actualAuthUserValue = "eyJhbGciOiJIUzUxMiJ9"
+  private lateinit var baseWireMockUrl: String
+
+  @BeforeEach
+  fun configWireMockStub() {
+    WireMockController().setUpMock()
+    baseWireMockUrl = StaticContextHolder.getConfig().getWireMockUrl()
+    println(CrmMockConfig().header.values.toString())
   }
 
-  private fun getMappingStub(): MappingBuilder =
-    post(WireMock.urlMatching("/secure/rest/sign/in/"))
-      .atPriority(1)
-      .withName("LoggingToCrmStub")
-      .willReturn(
-        aResponse()
-          .withStatus(200)
-          .withHeader("Set-Cookie", "AuthUser=eyJhbGciOiJIUzUxMiJ9")
-          .withBody(convertJsonAsString())
-      )
+  @AfterEach
+  fun removeWireMockStub() {
+    WireMockController().deleteMock()
+  }
 
-  private fun convertJsonAsString(): String? =
-    Thread.currentThread().contextClassLoader.getResourceAsStream("successCrmLoginResponse.json")
-      ?.readBytes()?.toString(Charsets.UTF_8)
+  @Test
+  fun `Start WireMock and verify the AuthUser cookie is set when logging into CRM with incorrect credentials`() {
+    val response: HttpClientResponse = CrmController(baseWireMockUrl).authCrm()
+    val expectedAuthUserValue: String? = response.getValueFromCookies(authUserValue)
+    Assertions.assertEquals(expectedAuthUserValue, actualAuthUserValue, "$expectedAuthUserValue contains no data")
+  }
 }
