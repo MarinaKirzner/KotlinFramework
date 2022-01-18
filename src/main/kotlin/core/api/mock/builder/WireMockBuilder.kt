@@ -6,21 +6,21 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import core.api.mock.model.CrmMockConfig
 import core.context.constant.StaticContextHolder.getConfig
 
-class WireMockBuilder(private val crmMockConfig: CrmMockConfig = CrmMockConfig()) {
+class WireMockBuilder {
 
-  fun getStubMapping(): MappingBuilder {
+  fun getStubMapping(crmMockConfig: CrmMockConfig): MappingBuilder {
     return WireMock.post(getConfig().getWireMockUrl())
       .atPriority(crmMockConfig.priority)
       .withName(crmMockConfig.mockName)
       .willReturn(
-        getStubResponse()
+        getStubResponse(crmMockConfig)
       )
   }
 
-  private fun getStubResponse(): ResponseDefinitionBuilder? {
+  private fun getStubResponse(crmMockConfig: CrmMockConfig): ResponseDefinitionBuilder? {
     return WireMock.aResponse()
       .withStatus(crmMockConfig.statusCode)
-      .withHeader("Set-Cookie", "AuthUser=eyJhbGciOiJIUzUxMiJ9")
       .withBody(crmMockConfig.body)
+      .withHeader(crmMockConfig.header.keys.toString(), crmMockConfig.header.values.toString())
   }
 }

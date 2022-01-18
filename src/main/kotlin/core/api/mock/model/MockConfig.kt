@@ -6,4 +6,5 @@ interface MockConfig {
   val statusCode: Int
   val header: Map<String, String>
   val body: String?
+  val mockEndUrl: String
 }

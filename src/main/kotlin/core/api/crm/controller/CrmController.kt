@@ -19,8 +19,8 @@ class CrmController(
   fun authCrm(): HttpClientResponse {
     val crmUserRequest: CrmUserRequest = crmRequestBuilder.getCrmUserRequestBody()
     val postResponse: Response<CrmUserResponse> = crmUserService.postCrmUserConfig(crmUserRequest).execute()
-    val httpClientResponse = HttpClientResponse(postResponse.raw())
-    sessionContext.sessionResponse = httpClientResponse
-    return httpClientResponse
+    return HttpClientResponse(postResponse.raw()).also {
+      sessionContext.sessionResponse = it
+    }
   }
 }
