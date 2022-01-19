@@ -17,11 +17,10 @@ class WireMockBuilder {
       )
   }
 
-  private fun getStubResponse(crmMockConfig: CrmMockConfig): ResponseDefinitionBuilder? {
+  private fun getStubResponse(crmMockConfig: CrmMockConfig): ResponseDefinitionBuilder {
     val builder = WireMock.aResponse()
-      .withStatus(crmMockConfig.statusCode)
-      .withBody(crmMockConfig.body)
-      crmMockConfig.header.forEach{ builder.withHeader(it.key, it.value) }
+    builder.withStatus(crmMockConfig.statusCode).withBody(crmMockConfig.body)
+    crmMockConfig.header.forEach{ builder.withHeader(it.key, it.value) }
     return builder
   }
 }

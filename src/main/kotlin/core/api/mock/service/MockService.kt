@@ -1,9 +1,6 @@
 package core.api.mock.service
 
 import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor
-import com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo
-import com.github.tomakehurst.wiremock.client.WireMock.verify
 import core.api.mock.builder.WireMockBuilder
 import core.api.mock.model.CrmMockConfig
 import core.context.wireMockConfig
@@ -15,13 +12,14 @@ class MockService {
 
   fun raiseStub(crmMockConfig: CrmMockConfig) {
     crmMockConfig.mappingBuilder = wireMockBuilder.getStubMapping(crmMockConfig)
-    wireMockClient.register(crmMockConfig.mappingBuilder)
+    wireMockClient.register(crmMockConfig.mappingBuilder).apply {
+      crmMockConfig.uuid = this.uuid
+    }
     verifyStub(crmMockConfig)
   }
 
   private fun verifyStub(crmMockConfig: CrmMockConfig) {
-    verify((postRequestedFor(urlEqualTo(crmMockConfig.mockEndUrl))
-      .withPort(wireMockConfig.port)))
+    wireMockClient.getStubMapping(crmMockConfig.uuid) ?: IllegalArgumentException("Don't raise stub")
   }
 
   fun removeStub(crmMockConfig: CrmMockConfig) = WireMock.removeStub(crmMockConfig.mappingBuilder)
