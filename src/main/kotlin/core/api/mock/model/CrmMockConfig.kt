@@ -2,8 +2,10 @@ package core.api.mock.model
 
 import com.github.tomakehurst.wiremock.client.MappingBuilder
 import core.reader.JsonFileRead
+import java.util.*
 
 data class CrmMockConfig(
+  override var uuid: UUID? = null,
   override val priority: Int = 1,
   override val mockName: String = "LoginToCrmStub",
   override val statusCode: Int = 200,
