@@ -3,13 +3,13 @@ package core.api.mock.builder
 import com.github.tomakehurst.wiremock.client.MappingBuilder
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import com.github.tomakehurst.wiremock.client.WireMock
+import com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo
 import core.api.mock.model.CrmMockConfig
-import core.context.constant.StaticContextHolder.getConfig
 
 class WireMockBuilder {
 
   fun getStubMapping(crmMockConfig: CrmMockConfig): MappingBuilder {
-    return WireMock.post(getConfig().getWireMockUrl())
+    return WireMock.any(urlEqualTo(crmMockConfig.mockEndUrl))
       .atPriority(crmMockConfig.priority)
       .withName(crmMockConfig.mockName)
       .willReturn(
@@ -18,9 +18,10 @@ class WireMockBuilder {
   }
 
   private fun getStubResponse(crmMockConfig: CrmMockConfig): ResponseDefinitionBuilder? {
-    return WireMock.aResponse()
+    val builder = WireMock.aResponse()
       .withStatus(crmMockConfig.statusCode)
       .withBody(crmMockConfig.body)
-      .withHeader(crmMockConfig.header.keys.toString(), crmMockConfig.header.values.toString())
+      crmMockConfig.header.forEach{ builder.withHeader(it.key, it.value) }
+    return builder
   }
 }

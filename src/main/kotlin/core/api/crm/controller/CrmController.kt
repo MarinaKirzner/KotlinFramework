@@ -15,12 +15,9 @@ class CrmController(
   private val crmUserService: CrmService = RetrofitServiceBuilder().buildService(baseUrl, CrmService::class.java),
   private val crmRequestBuilder: CrmRequestBuilder = CrmRequestBuilder()
 ) {
-
   fun authCrm(): HttpClientResponse {
     val crmUserRequest: CrmUserRequest = crmRequestBuilder.getCrmUserRequestBody()
     val postResponse: Response<CrmUserResponse> = crmUserService.postCrmUserConfig(crmUserRequest).execute()
-    return HttpClientResponse(postResponse.raw()).also {
-      sessionContext.sessionResponse = it
-    }
+    return HttpClientResponse(postResponse.raw()).also { sessionContext.sessionResponse = it }
   }
 }

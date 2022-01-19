@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test
 
 class LoginApiCrmWireMockTest : BaseTest() {
 
-  private val authUserValue: String = "AuthUser"
   private lateinit var baseWireMockUrl: String
   private val crmMockConfig: CrmMockConfig = CrmMockConfig()
 
@@ -26,10 +25,10 @@ class LoginApiCrmWireMockTest : BaseTest() {
   }
 
   @Test
-  fun `Start WireMock and verify the AuthUser cookie is set when logging into CRM with incorrect credentials`() {
+  fun `Raise Crm Authorisation Mock and verify the AuthUser cookie is set when logging into CRM with incorrect credentials`() {
     val response: HttpClientResponse = CrmController(baseWireMockUrl).authCrm()
-    val expectedCookieValue: String? = response.getValueFromCookies(authUserValue)
-    val actualCookieValue: String = CrmMockConfig().authUserCookieValue
+    val expectedCookieValue: String? = response.getCookie()
+    val actualCookieValue: String = crmMockConfig.header.getValue(response.cookieHeaderName)
     Assertions.assertEquals(expectedCookieValue, actualCookieValue, "$expectedCookieValue contains no data")
   }
 }

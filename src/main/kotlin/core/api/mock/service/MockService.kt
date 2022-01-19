@@ -14,12 +14,15 @@ class MockService {
   private val wireMockClient: WireMock = WireMock(wireMockConfig.host, wireMockConfig.port)
 
   fun raiseStub(crmMockConfig: CrmMockConfig) {
-    wireMockClient.register(wireMockBuilder.getStubMapping(crmMockConfig))
-    verify(
-      (postRequestedFor(urlEqualTo(crmMockConfig.mockEndUrl))
-        .withPort(wireMockConfig.port))
-    )
+    crmMockConfig.mappingBuilder = wireMockBuilder.getStubMapping(crmMockConfig)
+    wireMockClient.register(crmMockConfig.mappingBuilder)
+    verifyStub(crmMockConfig)
   }
 
-  fun removeStub(crmMockConfig: CrmMockConfig) = WireMock.removeStub(wireMockBuilder.getStubMapping(crmMockConfig))
+  private fun verifyStub(crmMockConfig: CrmMockConfig) {
+    verify((postRequestedFor(urlEqualTo(crmMockConfig.mockEndUrl))
+      .withPort(wireMockConfig.port)))
+  }
+
+  fun removeStub(crmMockConfig: CrmMockConfig) = WireMock.removeStub(crmMockConfig.mappingBuilder)
 }
