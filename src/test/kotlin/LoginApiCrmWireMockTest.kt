@@ -27,8 +27,8 @@ class LoginApiCrmWireMockTest : BaseTest() {
   @Test
   fun `Raise Crm Authorisation Mock and verify the AuthUser cookie is set when logging into CRM with incorrect credentials`() {
     val response: HttpClientResponse = CrmController(baseWireMockUrl).authCrm()
-    val expectedCookieValue: String? = response.getCookie()
-    val actualCookieValue: String? = crmMockConfig.header[response.cookieHeaderName]
-    Assertions.assertEquals(expectedCookieValue, actualCookieValue, "$expectedCookieValue contains no data")
+    val expectedCookieHeaderName: String? = response.getCookie()
+    val actualCookieHeaderName: String? = crmMockConfig.header[response.cookieHeaderName]
+    Assertions.assertEquals(expectedCookieHeaderName, actualCookieHeaderName, "$expectedCookieHeaderName contains no data")
   }
 }
