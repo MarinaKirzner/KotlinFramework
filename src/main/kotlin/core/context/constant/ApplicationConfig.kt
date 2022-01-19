@@ -1,5 +1,6 @@
 package core.context.constant
 
+import core.api.mock.model.WireMockConfig
 import core.context.TafContext
 
 data class ApplicationConfig(
@@ -8,10 +9,12 @@ data class ApplicationConfig(
   val host: String,
   val registrationUrl: String,
   val registrationEndPoint: String,
-  val crmUserConfig: CrmUserConfig
+  val crmUserConfig: CrmUserConfig,
+  val wireMockConfig: WireMockConfig
 ) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
+    private const val PROTOCOL_HTTP = "http://"
   }
 
   fun getUrlWithSelectedEndpointWithBasicAuth(urlEndpoint: String) = "${getBaseUrlWithAuth()}${urlEndpoint}"
@@ -21,4 +24,6 @@ data class ApplicationConfig(
   fun getBaseUrlWithAuth() = "$PROTOCOL_HTTPS${user}:${pass}@${host}"
 
   fun getBaseUrl() = "$PROTOCOL_HTTPS${host}"
+
+  fun getWireMockUrl() = "$PROTOCOL_HTTP${wireMockConfig.host}:${wireMockConfig.port}"
 }

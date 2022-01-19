@@ -5,24 +5,28 @@ import okhttp3.Response
 
 class HttpClientResponse(val response: Response) {
 
-  private val name = "Set-Cookie"
-  val delimiter = ";"
-  val equal = "="
+  val cookieHeaderName = "Set-Cookie"
+  private val delimiter = ";"
+  private val equal = "="
 
-  fun getHeader(response: Response): Headers {
+  private fun getHeaders(): Headers {
     return response.headers
   }
 
+  private fun getHeader(headerName: String): String? {
+    return response.headers[headerName]
+  }
+
+  fun getCookie(): String? = getHeader(cookieHeaderName)
+
   fun getValueFromCookies(cookieName: String): String? {
     var cookieValue: String? = null
-    val cookies: String? = getHeader(response).get(name)
+    val cookies: String? = getHeaders().get(cookieHeaderName)
     cookies?.apply {
       val cookiesList: List<String> = cookies.split(delimiter).map { it.trim() }
       val cookiesMap: Map<String, String> = cookiesList.map { it.split(equal) }
-        .associate {
-          it.first() to it.last()
-        }
-      cookieValue = cookiesMap.getValue(cookieName)
+        .associate { it.first() to it.last() }
+      cookieValue = cookiesMap[cookieName]
     }
     return cookieValue
   }

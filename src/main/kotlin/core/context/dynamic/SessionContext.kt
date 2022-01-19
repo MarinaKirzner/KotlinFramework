@@ -10,7 +10,7 @@ class SessionContext : Observable {
   var observers: ArrayList<Observer> = ArrayList()
 
   init {
-    val sessionContextObserver: SessionContextObserver = SessionContextObserver(this)
+    val sessionContextObserver = SessionContextObserver(this)
     this.observers.add(sessionContextObserver)
   }
 
@@ -22,9 +22,5 @@ class SessionContext : Observable {
       notifyObservers()
     }
 
-  override fun notifyObservers() {
-    observers.forEach {
-      it.update()
-    }
-  }
+  override fun notifyObservers() = observers.forEach { it.update() }
 }

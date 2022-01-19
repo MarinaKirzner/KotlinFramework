@@ -1,9 +1,9 @@
 package core.context
 
-import core.api.crm.controller.CrmController
+import core.api.mock.model.WireMockConfig
+import core.context.constant.StaticContextHolder
 import core.context.dynamic.DynamicContextHolder
 import core.context.dynamic.SessionContext
-import core.http.response.HttpClientResponse
 
 val sessionContext: SessionContext = DynamicContextHolder.getConfig().sessionContext
-val httpClientResponse: HttpClientResponse = CrmController().authCrm()
+val wireMockConfig: WireMockConfig = StaticContextHolder.getConfig().wireMockConfig
