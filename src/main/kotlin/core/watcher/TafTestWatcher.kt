@@ -7,11 +7,9 @@ import org.junit.jupiter.api.extension.TestWatcher
 
 class TafTestWatcher : TestWatcher {
   private val logger: Logger = LogManager.getLogger()
-  private val resultWatcherStatus: ArrayList<TestResultStatusType> = ArrayList()
 
   override fun testFailed(context: ExtensionContext, cause: Throwable?) {
     logger.info("Test Failed for test {}: ", context.displayName)
     AllureAttachment().attachmentScreenshot()
-    resultWatcherStatus.add(TestResultStatusType.FAILED)
   }
 }
