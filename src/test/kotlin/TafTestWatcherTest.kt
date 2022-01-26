@@ -11,7 +11,7 @@ class TafTestWatcherTest {
   private val actualUrl: String = "https://www.baeldung.com/junit-testwatcher"
 
   @Test
-  fun failResultLoggerExtension() {
+  fun `Make screenshot for failed test and add this to Allure`() {
     Selenide.open(actualUrl)
     Assertions.assertEquals(expectedUrl, actualUrl, "Expected url isn't actual url")
   }
