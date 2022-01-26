@@ -9,7 +9,7 @@ class TafTestWatcher : TestWatcher {
   private val logger: Logger = LogManager.getLogger()
 
   override fun testFailed(context: ExtensionContext, cause: Throwable?) {
-    logger.info("Test Failed for test {}: ", context.displayName)
+    logger.info("Test Failed for test $context.displayName")
     AllureAttachment().attachmentScreenshot()
   }
 }

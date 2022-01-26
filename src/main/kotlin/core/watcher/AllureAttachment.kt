@@ -8,9 +8,11 @@ import org.openqa.selenium.OutputType
 
 class AllureAttachment {
 
+  private val screenshotName: String = "Screenshot"
+
   @Attachment
   fun attachmentScreenshot() {
     val file = Selenide.screenshot(OutputType.FILE)
-    Allure.attachment("Baeldung", FileUtils.openInputStream(file))
+    Allure.attachment(screenshotName, FileUtils.openInputStream(file))
   }
 }
