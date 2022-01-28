@@ -1,4 +1,4 @@
-package core.watcher
+package core.watchers
 
 import com.codeborne.selenide.Selenide
 import io.qameta.allure.Allure
