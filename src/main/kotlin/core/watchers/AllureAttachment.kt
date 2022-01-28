@@ -1,6 +1,7 @@
 package core.watchers
 
 import com.codeborne.selenide.Selenide
+import com.codeborne.selenide.WebDriverRunner
 import io.qameta.allure.Allure
 import io.qameta.allure.Attachment
 import org.apache.commons.io.FileUtils
@@ -12,7 +13,8 @@ class AllureAttachment {
 
   @Attachment
   fun attachmentScreenshot() {
-    val file = Selenide.screenshot(OutputType.FILE)
-    Allure.attachment(screenshotName, FileUtils.openInputStream(file))
+    if (WebDriverRunner.hasWebDriverStarted()) {
+      Allure.attachment(screenshotName, FileUtils.openInputStream(Selenide.screenshot(OutputType.FILE)))
+    }
   }
 }
