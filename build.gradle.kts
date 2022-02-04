@@ -17,11 +17,17 @@ val okhttp3LoggingInterceptor: String by project
 val retrofit: String by project
 val retrofitConverterGson: String by project
 val wireMockVersion: String by project
+val mySqlConnection: String by project
+val jdbs: String by project
 
 plugins {
   kotlin("jvm") version "1.5.31"
   idea
+  id("io.qameta.allure") version "2.9.6"
 }
+
+apply(plugin = "io.qameta.allure")
+apply(plugin = "org.jetbrains.kotlin.jvm")
 
 idea {
   project {
@@ -29,6 +35,11 @@ idea {
     languageLevel = IdeaLanguageLevel("1.8")
   }
   module.name = "KotlinFramework"
+}
+
+allure {
+  adapter.autoconfigure
+  adapter.aspectjWeaver
 }
 
 group = "me.user"
@@ -39,6 +50,9 @@ repositories {
 }
 
 dependencies {
+  implementation(kotlin("stdlib"))
+  implementation ("com.vladsch.kotlin-jdbc:kotlin-jdbc:$jdbs")
+  implementation("mysql:mysql-connector-java:$mySqlConnection")
   implementation("org.junit.jupiter:junit-jupiter:$junitJupiter")
   implementation("org.accidia:protoserver:$accidiaProtoserver")
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterApi")
