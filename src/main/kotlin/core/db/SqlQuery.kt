@@ -1,4 +1,7 @@
 package core.db
 
-const val oneRowDataFromDb: String = """SELECT * FROM mrt.client WHERE id = 328"""
-const val allRowDataFromDb: String = """SELECT * FROM mrt.client limit 3"""
+import com.vladsch.kotlin.jdbc.SqlQuery
+import com.vladsch.kotlin.jdbc.sqlQuery
+
+val queryForOneRow: SqlQuery = sqlQuery("select * from mrt.client limit ?")
+val queryForAllRow: SqlQuery = sqlQuery("select * from mrt.client")
