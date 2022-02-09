@@ -1,7 +1,9 @@
 package core.db
 
-import com.vladsch.kotlin.jdbc.SqlQuery
-import com.vladsch.kotlin.jdbc.sqlQuery
+val mrtClientDbSelectOneRow: String = """
+    SELECT * FROM mrt.client WHERE id = :id
+  """.trimIndent()
 
-val queryForOneRow: SqlQuery = sqlQuery("select * from mrt.client limit ?")
-val queryForAllRow: SqlQuery = sqlQuery("select * from mrt.client")
+val mrtClientDbSelectAllRows: String = """
+    SELECT * FROM mrt.client
+  """.trimIndent()

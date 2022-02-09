@@ -2,7 +2,7 @@ package core.db
 
 import java.sql.ResultSet
 
-class ResultSetProvider {
+object ResultSetProvider {
 
   fun getOneRowData(): (ResultSet) -> Map<String, Any> = { resultSet ->
     val rowData: HashMap<String, Any> = hashMapOf()
@@ -16,8 +16,8 @@ class ResultSetProvider {
     rowData
   }
 
-  fun getAllRowsData(): (ResultSet) -> ArrayList<HashMap<String, Any>> = { resultSet ->
-    val rowsData: ArrayList<HashMap<String, Any>> = arrayListOf()
+  fun getAllRowsData(): (ResultSet) -> ArrayList<Map<String, Any>> = { resultSet ->
+    val rowsData: ArrayList<Map<String, Any>> = arrayListOf()
     val md = resultSet.metaData
     val columns: Int = md.columnCount
     while (resultSet.next()) {
