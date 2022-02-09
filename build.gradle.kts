@@ -51,7 +51,7 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation ("com.vladsch.kotlin-jdbc:kotlin-jdbc:$jdbs")
+  implementation("com.vladsch.kotlin-jdbc:kotlin-jdbc:$jdbs")
   implementation("mysql:mysql-connector-java:$mySqlConnection")
   implementation("org.junit.jupiter:junit-jupiter:$junitJupiter")
   implementation("org.accidia:protoserver:$accidiaProtoserver")
