@@ -5,7 +5,7 @@ import com.vladsch.kotlin.jdbc.sqlQuery
 
 class SqlQueryBuilder {
 
-  fun getOneClientData(query: String, id: Int): SqlQuery {
-    return sqlQuery(query, mapOf("id" to id))
+  fun getOneClientData(query: String, parameter: Map<String, String>): SqlQuery {
+    return sqlQuery(query, parameter)
   }
 }

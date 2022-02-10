@@ -1,9 +1,9 @@
 package core.db
 
-val mrtClientDbSelectOneRow: String = """
+val selectClientByIdQuery: String = """
     SELECT * FROM mrt.client WHERE id = :id
   """.trimIndent()
 
-val mrtClientDbSelectAllRows: String = """
-    SELECT * FROM mrt.client
+val selectClientByContainsPartOfEmail: String = """
+   SELECT * FROM mrt.client WHERE email LIKE :partEmail AND email Like :numberEmail
   """.trimIndent()
