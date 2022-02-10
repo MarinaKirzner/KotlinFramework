@@ -29,6 +29,7 @@ class TafDbClient : DbClient {
   }
 
   override fun closeDbConnection() {
+    getClient().connection.close()
     session = null
   }
 }
