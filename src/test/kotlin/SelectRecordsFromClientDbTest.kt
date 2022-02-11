@@ -32,7 +32,7 @@ class SelectRecordsFromClientDbTest : BaseTest() {
 
   @Test
   fun `Verify selectAllRow returns multiple records from client table by email options`() {
-    val partEmailByClientDb: Map<String, String> = mapOf("partEmail" to "ta-x%", "emailContainsNumber" to "%65%")
+    val partEmailByClientDb: Map<String, String> = mapOf("partEmail" to "ta-x%", "emailContainsNumber" to "%64%")
     val expectedNumberEmail: ArrayList<Map<String, Any>> = tafDbClient
       .selectAllRows(selectClientByContainsPartOfEmail, partEmailByClientDb)
     Assertions.assertTrue(expectedNumberEmail.size>1, "Counts emails is one or null")
