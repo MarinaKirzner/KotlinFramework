@@ -5,8 +5,8 @@ import com.vladsch.kotlin.jdbc.sqlQuery
 
 class SqlQueryBuilder {
 
-  fun getQueryBuilder(query: String, parameters: Map<String, String>?): SqlQuery {
-    if (parameters == null) {
+  fun sqlQueryBuilder(query: String, parameters: Map<String, String>?): SqlQuery {
+    if (parameters.isNullOrEmpty()) {
       return sqlQuery(query)
     }
     return sqlQuery(query,parameters)
