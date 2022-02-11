@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class SelectRowsFromClientDbTest : BaseTest() {
+class SelectRecordsFromClientDbTest : BaseTest() {
 
   private lateinit var tafDbClient: TafDbClient
 
