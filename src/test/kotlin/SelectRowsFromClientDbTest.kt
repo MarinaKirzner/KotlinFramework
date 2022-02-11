@@ -26,14 +26,14 @@ class SelectRowsFromClientDbTest : BaseTest() {
   }
 
   @Test
-  fun `Verify selectOneRow returns single row from client table by email name`() {
+  fun `Verify selectOneRow returns single record from client table by email name`() {
     val selectEmail: Map<String, Any> = tafDbClient.selectOneRow(selectClientByIdQuery, idClient)
     val expectedEmail: String = selectEmail.getValue(emailColumnName) as String
     Assertions.assertEquals(expectedEmail, actualEmail, "Actual email doesn't match expected")
   }
 
   @Test
-  fun `Verify selectAllRow returns multiple rows from client table by email options`() {
+  fun `Verify selectAllRow returns multiple records from client table by email options`() {
     val expectedNumberEmail: ArrayList<Map<String, Any>> = tafDbClient
       .selectAllRows(selectClientByContainsPartOfEmail, partEmailByClientDb)
     Assertions.assertTrue(expectedNumberEmail.size>0, "Counts emails is null")
