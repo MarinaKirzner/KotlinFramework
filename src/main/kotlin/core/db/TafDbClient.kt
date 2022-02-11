@@ -18,13 +18,13 @@ class TafDbClient : DbClient {
   }
 
   override fun selectOneRow(query: String, parameters: Map<String, String>): Map<String, Any> {
-    val sqlQuery: SqlQuery = SqlQueryBuilder().sqlQueryBuilder(query, parameters)
+    val sqlQuery: SqlQuery = SqlQueryBuilder().buildParametersForSqlQuery(query, parameters)
     val rowData: (ResultSet) -> Map<String, Any> = ResultSetProvider.getOneRowData()
     return getClient().query(sqlQuery, rowData)
   }
 
   override fun selectAllRows(query: String, parameters: Map<String, String>): ArrayList<Map<String, Any>> {
-    val sqlQuery: SqlQuery = SqlQueryBuilder().sqlQueryBuilder(query, parameters)
+    val sqlQuery: SqlQuery = SqlQueryBuilder().buildParametersForSqlQuery(query, parameters)
     val rowsData: (ResultSet) -> ArrayList<Map<String, Any>> = ResultSetProvider.getAllRowsData()
     return getClient().query(sqlQuery, rowsData)
   }
