@@ -5,5 +5,5 @@ val selectClientByIdQuery: String = """
   """.trimIndent()
 
 val selectClientByContainsPartOfEmail: String = """
-   SELECT * FROM mrt.client WHERE email LIKE :partEmail AND email Like :numberEmail
+   SELECT * FROM mrt.client WHERE email LIKE :partEmail AND email Like :emailContainsNumber
   """.trimIndent()

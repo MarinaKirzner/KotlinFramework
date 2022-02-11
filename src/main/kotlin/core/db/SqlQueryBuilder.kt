@@ -5,7 +5,10 @@ import com.vladsch.kotlin.jdbc.sqlQuery
 
 class SqlQueryBuilder {
 
-  fun getOneClientData(query: String, parameter: Map<String, String>): SqlQuery {
-    return sqlQuery(query, parameter)
+  fun getQueryBuilder(query: String, parameters: Map<String, String>?): SqlQuery {
+    if (parameters == null) {
+      return sqlQuery(query)
+    }
+    return sqlQuery(query,parameters)
   }
 }
