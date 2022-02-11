@@ -2,6 +2,7 @@ package core.context.constant
 
 import core.api.mock.model.WireMockConfig
 import core.context.TafContext
+import core.db.model.DbClientConfig
 
 data class ApplicationConfig(
   var user: String,
@@ -10,7 +11,8 @@ data class ApplicationConfig(
   val registrationUrl: String,
   val registrationEndPoint: String,
   val crmUserConfig: CrmUserConfig,
-  val wireMockConfig: WireMockConfig
+  val wireMockConfig: WireMockConfig,
+  val dbClientConfig: DbClientConfig
 ) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
