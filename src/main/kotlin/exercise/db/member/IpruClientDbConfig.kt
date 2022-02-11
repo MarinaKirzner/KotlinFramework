@@ -1,6 +1,6 @@
-package core.db.model
+package exercise.db.member
 
-data class MemberDbConfig(
+data class IpruClientDbConfig(
   val id: String = "id",
   val clientType: String = "client_type",
   val email: String = "email"
