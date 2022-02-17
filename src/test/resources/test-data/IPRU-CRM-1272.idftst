@@ -20,9 +20,9 @@ Scenario: [CRM] [UI] Validation - Client data in the 'Основное' tab is t
 		Резидент - resident
 		ИНН - identification_number
   ``
-	  SELECT mrt.client.client_type, mrt.client.nickname, mrt.client.resident, mrt.client.identification_number
-	  FROM mrt.client
-	  WHERE id = {clientId}
+	 SELECT mrt.client.client_type, mrt.client.nickname, mrt.client.resident, mrt.client.identification_number
+	 FROM mrt.client
+	 WHERE id = {clientId}
   ``
   And: Search in the database in the Client_individual table for data about the selected client:
 		Фамилия - surname
@@ -35,9 +35,9 @@ Scenario: [CRM] [UI] Validation - Client data in the 'Основное' tab is t
 		СНИЛС - insurance_number
   ``
 	  SELECT mrt.client_individual.surname, mrt.client_individual.name, mrt.client_individual.middle_name,
-		      mrt.client_individual.full_name_changed, mrt.client_individual.previous_surname,
-			    mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
-			    mrt.client_individual.insurance_number
+		mrt.client_individual.full_name_changed, mrt.client_individual.previous_surname,
+	  mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
+		mrt.client_individual.insurance_number
 	  FROM mrt.client_individual
 	  WHERE id = {clientId}
   ``
