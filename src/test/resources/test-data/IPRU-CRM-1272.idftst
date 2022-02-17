@@ -36,7 +36,7 @@ Scenario: [CRM] [UI] Validation - Client data in the 'Основное' tab is t
   ``
 	  SELECT mrt.client_individual.surname, mrt.client_individual.name, mrt.client_individual.middle_name,
 		mrt.client_individual.full_name_changed, mrt.client_individual.previous_surname,
-	  mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
+		mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
 		mrt.client_individual.insurance_number
 	  FROM mrt.client_individual
 	  WHERE id = {clientId}
