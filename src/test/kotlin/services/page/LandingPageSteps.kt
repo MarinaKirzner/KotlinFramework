@@ -1,4 +1,4 @@
-package step
+package services.page
 
 import core.ui.page.LandingPage
 

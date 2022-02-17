@@ -1,7 +1,7 @@
 import core.http.client.IntegrationHttpClient
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import step.RegistrationPageSteps
+import services.page.RegistrationPageSteps
 
 class CallRegistrationUrlTest : BaseTest() {
 

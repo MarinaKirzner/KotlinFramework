@@ -3,6 +3,7 @@ package core.context.constant
 import core.api.mock.model.WireMockConfig
 import core.context.TafContext
 import core.db.model.DbClientConfig
+import core.ui.crm.model.IpruCrmConfig
 
 data class ApplicationConfig(
   var user: String,
@@ -12,7 +13,8 @@ data class ApplicationConfig(
   val registrationEndPoint: String,
   val crmUserConfig: CrmUserConfig,
   val wireMockConfig: WireMockConfig,
-  val dbClientConfig: DbClientConfig
+  val dbClientConfig: DbClientConfig,
+  val ipruCrmConfig: IpruCrmConfig
 ) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
@@ -28,4 +30,10 @@ data class ApplicationConfig(
   fun getBaseUrl() = "$PROTOCOL_HTTPS${host}"
 
   fun getWireMockUrl() = "$PROTOCOL_HTTP${wireMockConfig.host}:${wireMockConfig.port}"
+
+  fun getCrmLoginUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.registrationUrl}"
+
+  fun getCrmBaseUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.crmBaseUrl}"
+
+  fun getCrmClientsUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.crmClientsUrl}"
 }
