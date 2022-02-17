@@ -15,30 +15,30 @@ Scenario: [CRM] [UI] Validation - Client data in the 'Основное' tab is t
   Then: Page with client data is available
   And: Tab 'Основное' is available
   Then: Search in the database in the Client table for data about the selected client:
-	    Тип клиента - client_type
-  		Имя из обращения - nickname
-  		Резидент - resident
-  		ИНН - identification_number
+		Тип клиента - client_type
+		Имя из обращения - nickname
+		Резидент - resident
+		ИНН - identification_number
   ``
-    SELECT mrt.client.client_type, mrt.client.nickname, mrt.client.resident, mrt.client.identification_number
-    FROM mrt.client
-    WHERE id = {clientId}
+	  SELECT mrt.client.client_type, mrt.client.nickname, mrt.client.resident, mrt.client.identification_number
+	  FROM mrt.client
+	  WHERE id = {clientId}
   ``
   And: Search in the database in the Client_individual table for data about the selected client:
-		    Фамилия - surname
-    		Имя - name
-    		Отчество - middle_name
-    		Менялись ли ФИО? - full_name_changed
-    		Предыдущая фамилия (если менялась) - previous_surname
-    		Предыдущее имя (если менялось) - previous_name
-    		Предыдущее отчество (если менялось) - previous_middle_name
-    		СНИЛС - insurance_number
+		Фамилия - surname
+		Имя - name
+		Отчество - middle_name
+		Менялись ли ФИО? - full_name_changed
+		Предыдущая фамилия (если менялась) - previous_surname
+		Предыдущее имя (если менялось) - previous_name
+		Предыдущее отчество (если менялось) - previous_middle_name
+		СНИЛС - insurance_number
   ``
-    SELECT mrt.client_individual.surname, mrt.client_individual.name, mrt.client_individual.middle_name,
-           mrt.client_individual.full_name_changed, mrt.client_individual.previous_surname,
-           mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
-           mrt.client_individual.insurance_number
-    FROM mrt.client_individual
-    WHERE id = {clientId}
+	  SELECT mrt.client_individual.surname, mrt.client_individual.name, mrt.client_individual.middle_name,
+		      mrt.client_individual.full_name_changed, mrt.client_individual.previous_surname,
+			    mrt.client_individual.previous_name, mrt.client_individual.previous_middle_name,
+			    mrt.client_individual.insurance_number
+	  FROM mrt.client_individual
+	  WHERE id = {clientId}
   ``
   Then: Client data in the 'Основное' tab is the same as the client data in the database
