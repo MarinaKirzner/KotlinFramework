@@ -15,8 +15,6 @@ class IpruCrmBasePageOperations {
 
   @Step
   fun openCrmClientsPage() {
-    ipruCrmClientPageOperations.apply {
-      selectCrmClientsPage()
-    }
+    ipruCrmClientPageOperations.selectCrmClientsPage()
   }
 }
