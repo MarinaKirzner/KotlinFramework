@@ -5,8 +5,8 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
-import services.page.IpruCrmBasePageOptions
-import services.page.IpruCrmLoginPageOptions
+import services.page.IpruCrmBasePageOperations
+import services.page.IpruCrmLoginPageOperations
 
 class IpruCrmExtension : BeforeEachCallback {
   companion object {
@@ -16,8 +16,8 @@ class IpruCrmExtension : BeforeEachCallback {
   override fun beforeEach(context: ExtensionContext?) {
     logger.info("Test start ${context?.displayName}")
     DriverConfigSetter().setDriverConfig()
-    IpruCrmLoginPageOptions().loginCrm()
-    IpruCrmBasePageOptions().apply {
+    IpruCrmLoginPageOperations().loginCrm()
+    IpruCrmBasePageOperations().apply {
       verifyCrmBasePage()
       openCrmClientsPage()
     }
