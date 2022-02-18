@@ -3,7 +3,7 @@ package services.page
 import core.ui.page.CrmClientByIdPage
 import io.qameta.allure.Step
 
-class IpruCrmClientByIdOptions {
+class IpruCrmClientByIdOperations {
 
   private val crmClientByIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage() }
 

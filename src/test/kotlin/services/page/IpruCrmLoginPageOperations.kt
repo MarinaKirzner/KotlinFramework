@@ -4,7 +4,7 @@ import core.context.ipruCrmConfig
 import core.ui.page.CrmLoginPage
 import io.qameta.allure.Step
 
-class IpruCrmLoginPageOptions {
+class IpruCrmLoginPageOperations {
 
   private val crmLoginPage: CrmLoginPage by lazy { CrmLoginPage() }
 

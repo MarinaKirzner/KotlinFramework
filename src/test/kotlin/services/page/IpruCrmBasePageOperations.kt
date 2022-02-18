@@ -3,10 +3,10 @@ package services.page
 import core.ui.page.CrmBasePage
 import io.qameta.allure.Step
 
-class IpruCrmBasePageOptions {
+class IpruCrmBasePageOperations {
 
   private val crmBasePage: CrmBasePage by lazy { CrmBasePage() }
-  private val ipruCrmClientPageOptions: IpruCrmClientPageOptions = IpruCrmClientPageOptions()
+  private val ipruCrmClientPageOperations: IpruCrmClientPageOperations = IpruCrmClientPageOperations()
 
   @Step
   fun verifyCrmBasePage() {
@@ -15,7 +15,7 @@ class IpruCrmBasePageOptions {
 
   @Step
   fun openCrmClientsPage() {
-    ipruCrmClientPageOptions.apply {
+    ipruCrmClientPageOperations.apply {
       selectCrmClientsPage()
     }
   }
