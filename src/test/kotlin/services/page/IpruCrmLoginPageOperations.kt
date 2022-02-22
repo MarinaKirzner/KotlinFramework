@@ -1,6 +1,7 @@
 package services.page
 
-import core.context.ipruCrmConfig
+import core.context.ipruConfig
+import core.ui.crm.model.IpruCrmConfig
 import core.ui.page.CrmLoginPage
 import io.qameta.allure.Step
 
@@ -9,30 +10,15 @@ class IpruCrmLoginPageOperations {
   private val crmLoginPage: CrmLoginPage by lazy { CrmLoginPage() }
 
   @Step
-  fun loginCrm() {
-    openLoginPage()
-    setEmailAndPass(ipruCrmConfig.email, ipruCrmConfig.pass)
-    clickLogin()
-  }
-
-  @Step
-  fun openLoginPage() {
-    crmLoginPage.apply {
-      openPage()
-      verifyLoginUrl()
+  fun loginCrm(ipruCrmConfig: IpruCrmConfig? = ipruConfig) {
+    ipruCrmConfig?.let {
+      crmLoginPage.apply {
+        openPage()
+        verifyLoginUrl()
+        inputEmail(ipruConfig.email)
+        inputPassword(ipruConfig.pass)
+        loginButton()
+      }
     }
-  }
-
-  @Step
-  fun setEmailAndPass(email: String, pass: String) {
-    crmLoginPage.apply {
-      inputEmail(email)
-      inputPassword(pass)
-    }
-  }
-
-  @Step
-  fun clickLogin() {
-    crmLoginPage.loginButton()
   }
 }

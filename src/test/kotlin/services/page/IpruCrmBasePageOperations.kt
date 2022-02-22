@@ -6,7 +6,6 @@ import io.qameta.allure.Step
 class IpruCrmBasePageOperations {
 
   private val crmBasePage: CrmBasePage by lazy { CrmBasePage() }
-  private val ipruCrmClientPageOperations: IpruCrmClientPageOperations = IpruCrmClientPageOperations()
 
   @Step
   fun verifyCrmBasePage() {
@@ -15,6 +14,6 @@ class IpruCrmBasePageOperations {
 
   @Step
   fun openCrmClientsPage() {
-    ipruCrmClientPageOperations.selectCrmClientsPage()
+    crmBasePage.openCrmClientsPage()
   }
 }

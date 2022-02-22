@@ -5,7 +5,7 @@ Scenario: [CRM] [UI] Validation - Client data in the 'Основное' tab is t
   Given: Login to CRM
   And: Open page [Клиенты]
   And: Page URL is [<env-domain>/crm#/clients/]
-  And: One the page[Клиенты] available filter for client search
+  And: One the page [Клиенты] available filter for client search
   And: Select 'Физическое лицо' in the 'Тип клиента' drop-down
   And: Click on 'Искать' button
   And: [Клиенты] page is available

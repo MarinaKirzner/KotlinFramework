@@ -8,7 +8,7 @@ import org.openqa.selenium.By
 
 class CrmLoginPage : BasePage() {
 
-  override val url: String = getConfig().getCrmLoginUrl()
+  override val url: String = getConfig().run { getCrmEndpointUrl(crmLoginUrl) }
   private val crmEmailField: By = By.id("login")
   private val crmPassField: By = By.id("password")
   private val crmRegistrationButton: By = By.xpath("//button[@type='submit']")

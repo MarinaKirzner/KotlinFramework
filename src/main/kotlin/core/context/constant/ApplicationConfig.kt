@@ -2,7 +2,7 @@ package core.context.constant
 
 import core.api.mock.model.WireMockConfig
 import core.context.TafContext
-import core.db.model.DbClientConfig
+import core.db.model.DbConnectionConfig
 import core.ui.crm.model.IpruCrmConfig
 
 data class ApplicationConfig(
@@ -13,8 +13,11 @@ data class ApplicationConfig(
   val registrationEndPoint: String,
   val crmUserConfig: CrmUserConfig,
   val wireMockConfig: WireMockConfig,
-  val dbClientConfig: DbClientConfig,
-  val ipruCrmConfig: IpruCrmConfig
+  val dbConnectionConfig: DbConnectionConfig,
+  val ipruCrmConfig: IpruCrmConfig,
+  val crmLoginUrl: String,
+  val crmBaseUrl: String,
+  val crmClientsUrl: String
 ) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
@@ -31,9 +34,7 @@ data class ApplicationConfig(
 
   fun getWireMockUrl() = "$PROTOCOL_HTTP${wireMockConfig.host}:${wireMockConfig.port}"
 
-  fun getCrmLoginUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.registrationUrl}"
+  fun getCrmDomainUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}"
 
-  fun getCrmBaseUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.crmBaseUrl}"
-
-  fun getCrmClientsUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}${ipruCrmConfig.crmClientsUrl}"
+  fun getCrmEndpointUrl(crmUrlEndpoint: String) = "${getCrmDomainUrl()}$crmUrlEndpoint"
 }

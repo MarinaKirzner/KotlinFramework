@@ -8,27 +8,17 @@ class IpruCrmClientPageOperations {
   private val clientPage: CrmClientPage by lazy { CrmClientPage() }
 
   @Step
-  fun selectCrmClientsPage() {
-    clientPage.apply {
-      getCrmClientsPage()
-      verifyClientsPageUrl()
-    }
+  fun verifyClientsPage() {
+    clientPage.verifyCrmClientsPage()
   }
 
   @Step
-  fun selectClientTypeByCrmClientsPage(clientType: String) {
-    clientPage.apply {
-      verifyClientsFilterByPage()
-      selectClientTypeByDropdown(clientType)
-      verifyClientsTableFromPage()
-    }
+  fun selectCrmClientsTypePage(clientType: String) {
+    clientPage.selectClientTypeByFilter(clientType)
   }
 
   @Step
-  fun selectClientByIdFromCrmClientsPage(clientId: String) {
-    clientPage.apply {
-      selectClientById(clientId)
-      verifyClientByIdPageUrl(clientId)
-    }
+  fun selectCrmClientIdPage(clientId: String) {
+    clientPage.selectClientIdFromTable(clientId)
   }
 }

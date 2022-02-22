@@ -1,14 +1,22 @@
 package core.ui.page
 
-import core.ui.element.TableInformation.getClientInformation
-import org.openqa.selenium.By
+import core.context.constant.StaticContextHolder.getConfig
+import core.ui.block.CrmClientByIdTableMainDetailsBlock
+import core.ui.element.Browser.verifyCurrentUrl
 
-class CrmClientByIdPage {
+class CrmClientByIdPage : BasePage() {
 
-  private val cellTypeOfTable: By = By.xpath("//div[1]/div/div[1]/table/tbody/tr/th")
-  private val cellTypeDetailsOfTable: By = By.xpath("//div[1]/div/div[1]/table/tbody/tr/td")
+  override val url: String = getConfig().run { getCrmEndpointUrl("$crmClientsUrl/%s") }
 
-  fun selectClientInformation() {
-    getClientInformation(cellTypeOfTable, cellTypeDetailsOfTable)
+  fun verifyClientByIdPageUrl(id: String) {
+    verifyCurrentUrl(String.format(url, id))
+  }
+
+  fun verifyClientIdInformationBlock() {
+    CrmClientByIdTableMainDetailsBlock().verifyClientIdTableBlock()
+  }
+
+  fun selectClientMainInformation() {
+    CrmClientByIdTableMainDetailsBlock().selectClientIdDetailsFromTableBlock()
   }
 }

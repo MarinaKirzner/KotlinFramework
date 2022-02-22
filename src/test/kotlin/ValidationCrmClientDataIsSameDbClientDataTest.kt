@@ -1,22 +1,34 @@
+import core.ui.driver.setter.DriverConfigSetter
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import services.extention.IpruCrmExtension
+import services.page.IpruCrmBasePageOperations
 import services.page.IpruCrmClientByIdOperations
 import services.page.IpruCrmClientPageOperations
+import services.page.IpruCrmLoginPageOperations
 
-@ExtendWith(IpruCrmExtension::class)
-class ValidationCrmClientDataIsSameDbClientDataTest: BaseTest() {
+class ValidationCrmClientDataIsSameDbClientDataTest : BaseTest() {
 
   private val ipruCrmClientPageOperations: IpruCrmClientPageOperations = IpruCrmClientPageOperations()
   private val clientType: String = "Физическое лицо"
-  private val clientId: String = "456"
+  private val clientId: String = "604"
+
+  @BeforeEach
+  fun loginCrmPage() {
+    DriverConfigSetter().setDriverConfig()
+    IpruCrmLoginPageOperations().loginCrm()
+  }
 
   @Test
   fun `CRM - UI - Validation client main-data in the UI is the same as the client data in the database`() {
-    ipruCrmClientPageOperations.apply {
-      selectClientTypeByCrmClientsPage(clientType)
-      selectClientByIdFromCrmClientsPage(clientId)
+    IpruCrmBasePageOperations().apply {
+      verifyCrmBasePage()
+      openCrmClientsPage()
     }
-    IpruCrmClientByIdOperations().selectInformationFromCrmClientByIdPage()
+    ipruCrmClientPageOperations.apply {
+      verifyClientsPage()
+      selectCrmClientsTypePage(clientType)
+      selectCrmClientIdPage(clientId)
+    }
+    IpruCrmClientByIdOperations().selectInformationFromCrmClientByIdPage(clientId)
   }
 }
