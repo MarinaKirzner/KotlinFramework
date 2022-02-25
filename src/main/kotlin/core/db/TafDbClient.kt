@@ -3,7 +3,7 @@ package core.db
 import com.vladsch.kotlin.jdbc.Session
 import com.vladsch.kotlin.jdbc.SqlQuery
 import com.vladsch.kotlin.jdbc.session
-import core.context.dbClientConfig
+import core.context.dbConnectionConfig
 import java.sql.ResultSet
 
 class TafDbClient : DbClient {
@@ -12,7 +12,7 @@ class TafDbClient : DbClient {
 
   override fun getClient(): Session {
     if (session == null) {
-      session = dbClientConfig.run { session(url, user, password) }
+      session = dbConnectionConfig.run { session(url, user, password) }
     }
     return session!!
   }

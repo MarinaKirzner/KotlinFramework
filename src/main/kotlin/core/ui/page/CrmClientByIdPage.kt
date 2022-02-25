@@ -1,22 +1,20 @@
 package core.ui.page
 
-import core.context.constant.StaticContextHolder.getConfig
-import core.ui.block.CrmClientByIdTableMainDetailsBlock
+import core.context.constant.StaticContextHolder
+import core.ui.block.CrmClientMainDetailsBlock
 import core.ui.element.Browser.verifyCurrentUrl
 
 class CrmClientByIdPage : BasePage() {
 
-  override val url: String = getConfig().run { getCrmEndpointUrl("$crmClientsUrl/%s") }
+  override val url: String = StaticContextHolder.getConfig().getCrmUrlWithSelectedEndpoint("/crm#/clients/%s")
+  private val crmClientDetailsBlock by lazy { CrmClientMainDetailsBlock() }
 
-  fun verifyClientByIdPageUrl(id: String) {
+  fun verifyClientIdPageOpened(id: String) {
     verifyCurrentUrl(String.format(url, id))
+    crmClientDetailsBlock.verifyDetailsBlockDisplayed()
   }
 
-  fun verifyClientIdInformationBlock() {
-    CrmClientByIdTableMainDetailsBlock().verifyClientIdTableBlock()
-  }
-
-  fun selectClientMainInformation() {
-    CrmClientByIdTableMainDetailsBlock().selectClientIdDetailsFromTableBlock()
+  fun getClientIdDetailsFromTable(): Map<String, String> {
+    return crmClientDetailsBlock.getClientIdMainDetailsFromTable()
   }
 }

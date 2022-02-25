@@ -14,10 +14,10 @@ class IpruCrmLoginPageOperations {
     ipruCrmConfig?.let {
       crmLoginPage.apply {
         openPage()
-        verifyLoginUrl()
+        verifyPageOpened()
         inputEmail(ipruConfig.email)
         inputPassword(ipruConfig.pass)
-        loginButton()
+        clickLoginButton()
       }
     }
   }

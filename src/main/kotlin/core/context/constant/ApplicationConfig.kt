@@ -14,10 +14,7 @@ data class ApplicationConfig(
   val crmUserConfig: CrmUserConfig,
   val wireMockConfig: WireMockConfig,
   val dbConnectionConfig: DbConnectionConfig,
-  val ipruCrmConfig: IpruCrmConfig,
-  val crmLoginUrl: String,
-  val crmBaseUrl: String,
-  val crmClientsUrl: String
+  val ipruCrmConfig: IpruCrmConfig
 ) : TafContext {
   companion object {
     private const val PROTOCOL_HTTPS = "https://"
@@ -36,5 +33,5 @@ data class ApplicationConfig(
 
   fun getCrmDomainUrl() = "$PROTOCOL_HTTPS${ipruCrmConfig.domain}"
 
-  fun getCrmEndpointUrl(crmUrlEndpoint: String) = "${getCrmDomainUrl()}$crmUrlEndpoint"
+  fun getCrmUrlWithSelectedEndpoint(crmUrlEndpoint: String) = "${getCrmDomainUrl()}$crmUrlEndpoint"
 }

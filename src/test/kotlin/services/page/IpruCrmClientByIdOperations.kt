@@ -5,14 +5,11 @@ import io.qameta.allure.Step
 
 class IpruCrmClientByIdOperations {
 
-  private val crmClientByIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage() }
+  private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage() }
 
   @Step
-  fun selectInformationFromCrmClientByIdPage(clientId: String) {
-    crmClientByIdPage.apply {
-      verifyClientByIdPageUrl(clientId)
-      verifyClientIdInformationBlock()
-      selectClientMainInformation()
-    }
+  fun getInformationByClientId(id: String): Map<String, String> {
+    crmClientIdPage.verifyClientIdPageOpened(id)
+    return crmClientIdPage.getClientIdDetailsFromTable()
   }
 }

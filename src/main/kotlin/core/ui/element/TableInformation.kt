@@ -3,19 +3,21 @@ package core.ui.element
 import com.codeborne.selenide.ElementsCollection
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import org.openqa.selenium.By
 
 object TableInformation {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun clientInformationFromTable(cellType: ElementsCollection, cellTypeDetails: ElementsCollection): MutableMap<String, String> {
-    logger.info("Get client information from table")
-    val crmClientInformation: MutableMap<String, String> = mutableMapOf()
-    crmClientInformation.apply {
-      for (i in 0 until cellType.size) {
-        crmClientInformation[cellType[i].text] = cellTypeDetails[i].text
-      }
+  fun getInformationFromTable(rowLocator: ElementsCollection): Map<String, String> {
+    logger.info("Get information from table")
+    val headerCellLocator: By = By.xpath("th")
+    val valueCellLocator: By = By.xpath("td")
+
+    val tableInformation: MutableMap<String, String> = mutableMapOf()
+    for (i in 0 until rowLocator.size) {
+      tableInformation[rowLocator[i].find(headerCellLocator).text] = rowLocator[i].find(valueCellLocator).text
     }
-    return crmClientInformation
+    return tableInformation
   }
 }

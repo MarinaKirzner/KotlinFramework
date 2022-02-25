@@ -4,10 +4,10 @@ import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide.`$`
 import org.openqa.selenium.By
 
-abstract class BaseLocator {
+abstract class BaseBlock {
   protected abstract val baseBlockLocator: By
 
-  open fun verifyIsBaseBlockDisplayed() {
+  fun verifyDetailsBlockDisplayed() {
     `$`(baseBlockLocator).shouldBe(Condition.visible)
   }
 }
