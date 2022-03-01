@@ -10,7 +10,7 @@ object SqlQuery {
    SELECT * FROM mrt.client WHERE email LIKE :partEmail AND email Like :emailContainsNumber
   """.trimIndent()
 
-  val selectMainDataFromClientByDb: String = """
+  val selectClientDbDataQuery: String = """
   SELECT 
   CONVERT(mrt.client.client_type USING utf8) as clientType,
   mrt.client.nickname, mrt.client.resident,
@@ -19,7 +19,7 @@ object SqlQuery {
   WHERE id = :id
 """.trimIndent()
 
-  val selectOtherDataFromClientByDb: String = """
+  val selectClientIndividualDbDataQuery: String = """
   SELECT 
   mrt.client_individual.surname, mrt.client_individual.name,
   CONVERT(mrt.client_individual.middle_name USING utf8) as middleName,

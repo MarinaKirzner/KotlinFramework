@@ -13,15 +13,16 @@ class IpruCrmClientPageOperations {
   }
 
   @Step
-  fun selectCrmClientsType(clientType: String) {
+  fun sortingClientsByType(clientType: String) {
     clientPage.apply {
       selectClientTypeByFilter(clientType)
-      crmClientFilter.clickSearchButtonByFilterBlock()
+      clickSearchButtonByFilter()
+      crmClientsTableBlock.verifyClientDetailsBlockDisplayed()
     }
   }
 
   @Step
-  fun openCrmClientIdPage(clientId: String) {
-    clientPage.openClientIdPage(clientId)
+  fun openClientIdFromFirstRowOfTable() {
+    clientPage.openClientIdPage()
   }
 }

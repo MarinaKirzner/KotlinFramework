@@ -9,14 +9,14 @@ import org.openqa.selenium.By
 class CrmLeadsPage : BasePage() {
 
   override val url: String = getConfig().getCrmUrlWithSelectedEndpoint("/crm#/leads")
-  private val crmClientsPage: By = By.linkText("Клиенты")
+  private val crmClientsMenuLocator: By = By.linkText("Клиенты")
 
   fun verifyPageOpened(){
-    super.isPageOpen()
-    `$`(crmClientsPage).shouldBe(Condition.visible)
+    super.verifyPageOpen()
+    `$`(crmClientsMenuLocator).shouldBe(Condition.visible)
   }
 
   fun clickCrmClientsPage() {
-    clickLink(crmClientsPage)
+    clickLink(crmClientsMenuLocator)
   }
 }

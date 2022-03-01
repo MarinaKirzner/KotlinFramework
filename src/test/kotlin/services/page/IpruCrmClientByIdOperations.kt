@@ -8,8 +8,8 @@ class IpruCrmClientByIdOperations {
   private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage() }
 
   @Step
-  fun getInformationByClientId(id: String): Map<String, String> {
-    crmClientIdPage.verifyClientIdPageOpened(id)
+  fun getInformationByClientId(): Map<String, String> {
+    crmClientIdPage.verifyClientIdPageOpened()
     return crmClientIdPage.getClientIdDetailsFromTable()
   }
 }

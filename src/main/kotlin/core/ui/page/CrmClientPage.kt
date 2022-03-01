@@ -9,21 +9,24 @@ import org.openqa.selenium.By
 class CrmClientPage : BasePage() {
 
   override val url: String = getConfig().getCrmUrlWithSelectedEndpoint("/crm#/clients")
-  private val clientId: String = "//a[text()='%s']"
-  val crmClientFilter by lazy { CrmClientsFilterBlock() }
-  private val crmClientsTable by lazy { CrmClientsTableBlock() }
+  private val clientIdFirstRowLocator: By = By.xpath("//td/a")
+  private val crmClientFilterBlockLocator by lazy { CrmClientsFilterBlock() }
+  val crmClientsTableBlock by lazy { CrmClientsTableBlock() }
 
   fun verifyPageOpened() {
-    super.isPageOpen()
-    crmClientsTable.verifyDetailsBlockDisplayed()
+    super.verifyPageOpen()
+    crmClientsTableBlock.verifyClientDetailsBlockDisplayed()
   }
 
   fun selectClientTypeByFilter(valueClientType: String) {
-    crmClientFilter.selectClientTypeByFilterBlock(valueClientType)
+    crmClientFilterBlockLocator.selectClientTypeByFilterBlock(valueClientType)
   }
 
-  fun openClientIdPage(id: String) {
-    val crmClientId: By = By.xpath(String.format(clientId, id))
-    clickLink(crmClientId)
+  fun clickSearchButtonByFilter() {
+    crmClientFilterBlockLocator.clickSearchButtonByFilterBlock()
+  }
+
+  fun openClientIdPage() {
+    clickLink(clientIdFirstRowLocator)
   }
 }

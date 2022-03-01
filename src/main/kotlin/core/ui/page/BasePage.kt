@@ -10,7 +10,7 @@ abstract class BasePage {
     open(url)
   }
 
-  fun isPageOpen() {
+  fun verifyPageOpen() {
     verifyCurrentUrl(url)
   }
 }
