@@ -1,5 +1,6 @@
 package core.ui.block
 
+import core.ui.crm.ClientType
 import core.ui.element.Button.clickButton
 import core.ui.element.Dropdown.setDropdownValue
 import org.openqa.selenium.By
@@ -10,8 +11,8 @@ class CrmClientsFilterBlock : BaseBlock() {
   private val crmClientTypeDropdownLocator: By = By.id("TYPE")
   private val crmSearchButtonLocator: By = By.cssSelector("[type='submit']")
 
-  fun selectClientTypeByFilterBlock(valueClientType: String) {
-    setDropdownValue(crmClientTypeDropdownLocator, valueClientType)
+  fun selectClientTypeByFilterBlock(valueClientType: ClientType) {
+    setDropdownValue(crmClientTypeDropdownLocator, valueClientType.name)
   }
 
   fun clickSearchButtonByFilterBlock() {

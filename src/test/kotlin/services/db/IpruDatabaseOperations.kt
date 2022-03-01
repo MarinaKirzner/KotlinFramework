@@ -5,15 +5,12 @@ import io.qameta.allure.Step
 
 class IpruDatabaseOperations {
 
+  private val clientId: String = "403"
+
   @Step
-  fun dbSelectClientData(queryMainData: String, queryOtherData: String): Map<String, Any> {
-    val clientData: MutableMap<String, Any> = mutableMapOf()
-    DbSelectClientData().apply {
-      with(clientData) {
-        putAll(dbSelectClientDataFromRow(queryMainData))
-        putAll(dbSelectClientDataFromRow(queryOtherData))
-      }
-    }
+  fun dbSelectClientData(): Map<String, Any> {
+    val clientData: MutableMap<String, Any> = DbSelectClientData().dbSqlSelectClientData(clientId) as MutableMap<String, Any>
+    clientData.putAll(DbSelectClientData().dbSqlSelectClientIndividualData(clientId))
     return clientData
   }
 }

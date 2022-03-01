@@ -1,0 +1,38 @@
+package crm
+
+import BaseTest
+import core.db.TafDbClient
+import core.ui.crm.ClientType
+import core.ui.driver.setter.DriverConfigSetter
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import services.db.IpruDatabaseOperations
+import services.page.IpruCrmLoginPageOperations
+import services.page.IpruCrmOperations
+
+class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
+
+  @BeforeEach
+  fun loginCrmPage() {
+    DriverConfigSetter().setDriverConfig()
+    IpruCrmLoginPageOperations().loginCrm()
+  }
+
+  @AfterEach
+  fun sessionClose() {
+    TafDbClient().closeDbConnection()
+  }
+
+  @Test
+  fun `CRM - UI - Client main-data in the UI is the same as the client data in the database`() {
+    IpruCrmOperations().apply {
+      openCrmClientsPage()
+      sortingClientsByType(ClientType.INDIVIDUAL)
+      openClientIdPageFromFirstRowOfTable()
+      getInformationByClientId()
+    }
+
+    IpruDatabaseOperations().dbSelectClientData()
+  }
+}

@@ -11,6 +11,6 @@ object Dropdown {
 
   fun setDropdownValue(dropdownValue: By, value: String) {
     logger.info("Select in dropdown $value")
-    `$`(dropdownValue).selectOptionContainingText(value)
+    `$`(dropdownValue).selectOptionByValue(value)
   }
 }

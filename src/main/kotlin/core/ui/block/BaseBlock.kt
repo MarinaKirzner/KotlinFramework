@@ -7,7 +7,7 @@ import org.openqa.selenium.By
 abstract class BaseBlock {
   protected abstract val baseBlockLocator: By
 
-  fun verifyClientDetailsBlockDisplayed() {
+  fun verifyBlockDisplayed() {
     `$`(baseBlockLocator).shouldBe(Condition.visible)
   }
 }
