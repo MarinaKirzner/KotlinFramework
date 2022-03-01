@@ -1,6 +1,6 @@
 package services.db
 
-import core.db.DbSelectClientData
+import core.db.DbSelectData
 import io.qameta.allure.Step
 
 class IpruDatabaseOperations {
@@ -9,8 +9,8 @@ class IpruDatabaseOperations {
 
   @Step
   fun dbSelectClientData(): Map<String, Any> {
-    val clientData: MutableMap<String, Any> = DbSelectClientData().dbSqlSelectClientData(clientId) as MutableMap<String, Any>
-    clientData.putAll(DbSelectClientData().dbSqlSelectClientIndividualData(clientId))
+    val clientData: MutableMap<String, Any> = DbSelectData().getDbSqlClientData(clientId) as MutableMap<String, Any>
+    clientData.putAll(DbSelectData().getDbSqlClientIndividualData(clientId))
     return clientData
   }
 }
