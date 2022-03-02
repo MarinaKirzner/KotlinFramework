@@ -1,5 +1,6 @@
 package core.ui.page
 
+import com.codeborne.selenide.Selenide.`$`
 import core.context.constant.StaticContextHolder.getConfig
 import core.ui.block.CrmClientsFilterBlock
 import core.ui.block.CrmClientsTableBlock
@@ -12,6 +13,7 @@ class CrmClientPage : BasePage() {
   private val clientIdFirstRowLocator: By = By.xpath("//td/a")
   val crmClientFilterBlock by lazy { CrmClientsFilterBlock() }
   val crmClientsTableBlock by lazy { CrmClientsTableBlock() }
+  val clientId: String = `$`(clientIdFirstRowLocator).text
 
   fun verifyPageOpened() {
     super.verifyPageOpen()

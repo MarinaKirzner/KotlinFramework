@@ -13,9 +13,7 @@ class IpruCrmOperations {
 
   private val crmLeadsPage: CrmLeadsPage by lazy { CrmLeadsPage() }
   private val clientPage: CrmClientPage by lazy { CrmClientPage() }
-  private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage(
-    clientId = `$`(By.tagName("h2")).text.split(" ").last()
-  ) }
+  private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage(clientId = clientPage.clientId) }
 
   @Step
   fun openCrmClientsPage() {
