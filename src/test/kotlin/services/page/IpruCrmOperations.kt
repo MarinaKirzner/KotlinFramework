@@ -1,16 +1,21 @@
 package services.page
 
+import com.codeborne.selenide.Selenide.`$`
+import core.ui.block.CrmClientMainDetailsBlock
 import core.ui.crm.ClientType
 import core.ui.page.CrmClientByIdPage
 import core.ui.page.CrmClientPage
 import core.ui.page.CrmLeadsPage
 import io.qameta.allure.Step
+import org.openqa.selenium.By
 
 class IpruCrmOperations {
 
   private val crmLeadsPage: CrmLeadsPage by lazy { CrmLeadsPage() }
   private val clientPage: CrmClientPage by lazy { CrmClientPage() }
-  private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage(clientId = "403") }
+  private val crmClientIdPage: CrmClientByIdPage by lazy { CrmClientByIdPage(
+    clientId = `$`(By.tagName("h2")).text.split(" ").last()
+  ) }
 
   @Step
   fun openCrmClientsPage() {
