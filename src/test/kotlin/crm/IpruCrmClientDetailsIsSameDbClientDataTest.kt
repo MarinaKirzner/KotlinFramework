@@ -1,10 +1,14 @@
 package crm
 
 import BaseTest
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import core.db.TafDbClient
 import core.ui.crm.ClientType
+import core.ui.crm.model.ClientDetailsConfig
 import core.ui.driver.setter.DriverConfigSetter
+import core.ui.page.CrmClientsPage
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import services.db.IpruDatabaseOperations
@@ -26,13 +30,22 @@ class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
 
   @Test
   fun `CRM - UI - Client main-data in the UI is the same as the client data in the database`() {
+    val uiClientData: Map<String, String>
+    val clientId: String = CrmClientsPage().getClientIdFromSearchResults()
     IpruCrmOperations().apply {
       openCrmClientsPage()
-      sortingClientsByType(ClientType.INDIVIDUAL)
-      openClientIdPageFromFirstRowOfTable()
-      getInformationByClientId()
+      searchClientsByType(ClientType.INDIVIDUAL)
+      openClientIdPageFromRowOfTable(clientId)
+      uiClientData = getInformationByClientId()
     }
 
-    IpruDatabaseOperations().dbSelectClientData()
+    val dbClientData: Map<String, Any> = IpruDatabaseOperations().dbSelectClientData(clientId)
+
+    val actualDbClientDetails = jacksonObjectMapper().convertValue(dbClientData, ClientDetailsConfig::class.java)
+    val expectedCrmClientDetails = jacksonObjectMapper().convertValue(uiClientData, ClientDetailsConfig::class.java)
+
+    Assertions.assertEquals(
+      expectedCrmClientDetails, actualDbClientDetails, "Client data on UI and Database is different"
+    )
   }
 }

@@ -10,7 +10,7 @@ data class ClientDetailsConfig(
   val surname: String? = null,
   val name: String? = null,
   val middleName: String? = null,
-  val fullNameChanged: Boolean? = null,
+  val fullNameChanged: String? = null,
   val previousSurname: String? = null,
   val previousName: String? = null,
   val previousMiddleName: String? = null,
