@@ -7,7 +7,7 @@ class CrmClientMainDetailsBlock : BaseBlock() {
 
   override val baseBlockLocator: By = By.xpath("//h4[text()='Общая информация']/ancestor::table")
 
-  private fun convertValueInString(field: String, map: Map<String, String>): String {
+  private fun convertValueInBoolean(field: String, map: Map<String, String>): String {
     return if (map.filter { it.key == field }.entries.first().value == "Да" ||
       map.filter { it.key == field }.entries.first().value == "1"
     ) "true"
@@ -19,8 +19,8 @@ class CrmClientMainDetailsBlock : BaseBlock() {
     crmClientMainDetails.apply {
       remove("Согласие на ПЭП")
       remove("Согласие на проверку")
-      put("Резидент", convertValueInString("Резидент", this))
-      put("Менялись ли ФИО?", convertValueInString("Менялись ли ФИО?", this))
+      put("Резидент", convertValueInBoolean("Резидент", this))
+      put("Менялись ли ФИО?", convertValueInBoolean("Менялись ли ФИО?", this))
     }
     return crmClientMainDetails
   }
