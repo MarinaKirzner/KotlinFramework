@@ -13,13 +13,4 @@ class CrmClientByIdPage(clientId: String) : BasePage() {
     verifyCurrentUrl(url)
     crmClientMainDetailsBlock.verifyBlockDisplayed()
   }
-
-  fun getCrmClientIdDetails(): Map<String, Any> {
-    val clientIdDetails: Map<String, Any> = crmClientMainDetailsBlock.getClientMainDetailsFromTable()
-    clientIdDetails as MutableMap
-    return clientIdDetails.apply {
-      remove("Согласие на ПЭП")
-      remove("Согласие на проверку")
-    }
-  }
 }

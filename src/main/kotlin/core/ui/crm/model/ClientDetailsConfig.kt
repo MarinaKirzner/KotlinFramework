@@ -29,8 +29,8 @@ data class ClientDetailsConfig(
     }
 
     fun convertInsuranceNumber(value: String): String? {
-      return if (value == "-") null
-      else "-"
+      if (value == "-") return null
+      return value
     }
   }
 }
