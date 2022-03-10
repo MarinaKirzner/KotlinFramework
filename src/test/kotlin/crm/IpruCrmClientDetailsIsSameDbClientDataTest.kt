@@ -17,15 +17,18 @@ import services.page.IpruCrmOperations
 
 class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
 
+  private lateinit var tafDbClient: TafDbClient
+
   @BeforeEach
   fun loginCrmPage() {
     DriverConfigSetter().setDriverConfig()
+    tafDbClient = TafDbClient()
     IpruCrmLoginPageOperations().loginCrm()
   }
 
   @AfterEach
   fun sessionClose() {
-    TafDbClient().closeDbConnection()
+    tafDbClient.closeDbConnection()
   }
 
   @Test
@@ -38,7 +41,7 @@ class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
       openClientIdPageFromRowOfTable(clientId)
       actualCrmClientIdDetails = getInformationByClientId()
     }
-    val dbClientIdDetails: Map<String, Any> = IpruDatabaseOperations().dbSelectClientData(clientId)
+    val dbClientIdDetails: Map<String, Any> = IpruDatabaseOperations().dbSelectClientData(clientId, tafDbClient)
     val expectedDbClientIdDetails = jacksonObjectMapper().convertValue(dbClientIdDetails, ClientDetailsConfig::class.java)
     Assertions.assertEquals(
       actualCrmClientIdDetails, expectedDbClientIdDetails, "Client data on UI and Database is different"
