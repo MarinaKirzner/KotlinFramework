@@ -41,7 +41,7 @@ class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
       openClientIdPageFromRowOfTable(clientId)
       actualCrmClientIdDetails = getInformationByClientId()
     }
-    val dbClientIdDetails: Map<String, Any> = IpruDatabaseOperations().dbSelectClientData(clientId)
+    val dbClientIdDetails: Map<String, Any> = IpruDatabaseOperations(tafDbClient).dbSelectClientData(clientId)
     val expectedDbClientIdDetails = jacksonObjectMapper().convertValue(dbClientIdDetails, ClientDetailsConfig::class.java)
     Assertions.assertEquals(
       actualCrmClientIdDetails, expectedDbClientIdDetails, "Client data on UI and Database is different"

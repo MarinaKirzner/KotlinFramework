@@ -5,9 +5,9 @@ import core.db.TafDbClient
 import core.ui.page.CrmLeadsPage
 import io.qameta.allure.Step
 
-class IpruDatabaseOperations {
+class IpruDatabaseOperations(tafDbClient: TafDbClient) {
 
-  private val dbSelectData: DbSelectData by lazy { DbSelectData() }
+  private val dbSelectData: DbSelectData = DbSelectData(tafDbClient)
 
   @Step
   fun dbSelectClientData(clientId: String): Map<String, Any> {
