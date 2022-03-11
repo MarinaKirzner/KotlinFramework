@@ -17,7 +17,10 @@ import services.page.IpruCrmOperations
 
 class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
 
+  private val expectedClientType: ClientType = ClientType.INDIVIDUAL
   private lateinit var tafDbClient: TafDbClient
+  private lateinit var actualCrmClientIdDetails: ClientDetailsConfig
+  private lateinit var expectedDbClientIdDetails: ClientDetailsConfig
 
   @BeforeEach
   fun loginCrmPage() {
@@ -33,16 +36,15 @@ class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
 
   @Test
   fun `CRM - UI - Client main-data in the UI is the same as the client data in the database`() {
-    val actualCrmClientIdDetails: ClientDetailsConfig
     val clientId: String = CrmClientsPage().getClientIdFromSearchResults()
     IpruCrmOperations().apply {
       openCrmClientsPage()
-      searchClientsByType(ClientType.INDIVIDUAL)
+      searchClientsByType(expectedClientType)
       openClientIdPageFromRowOfTable(clientId)
       actualCrmClientIdDetails = getInformationByClientId()
     }
     val dbClientIdDetails: Map<String, Any> = IpruDatabaseOperations(tafDbClient).dbSelectClientData(clientId)
-    val expectedDbClientIdDetails = jacksonObjectMapper().convertValue(dbClientIdDetails, ClientDetailsConfig::class.java)
+    expectedDbClientIdDetails = jacksonObjectMapper().convertValue(dbClientIdDetails, ClientDetailsConfig::class.java)
     Assertions.assertEquals(
       actualCrmClientIdDetails, expectedDbClientIdDetails, "Client data on UI and Database is different"
     )

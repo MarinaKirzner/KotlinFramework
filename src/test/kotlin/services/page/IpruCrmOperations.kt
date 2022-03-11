@@ -11,11 +11,7 @@ class IpruCrmOperations {
 
   private val crmLeadsPage: CrmLeadsPage by lazy { CrmLeadsPage() }
   private val crmClientsPage: CrmClientsPage by lazy { CrmClientsPage() }
-  private val crmClientIdPage: CrmClientByIdPage by lazy {
-    CrmClientByIdPage(
-      clientId = crmClientsPage.getClientIdFromSearchResults()
-    )
-  }
+  private lateinit var crmClientIdPage: CrmClientByIdPage
 
   @Step
   fun openCrmClientsPage() {
@@ -38,6 +34,7 @@ class IpruCrmOperations {
   @Step
   fun openClientIdPageFromRowOfTable(clientId: String) {
     crmClientsPage.openSelectedClientIdPage(clientId)
+    crmClientIdPage = CrmClientByIdPage( clientId = crmClientsPage.getClientIdFromSearchResults() )
     crmClientIdPage.verifyClientIdPageOpened()
   }
 
