@@ -7,7 +7,7 @@ import core.ui.page.RegistrationPage
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import step.LandingPageSteps
+import services.page.LandingPageSteps
 
 class CalculatorParametriseTest : BaseTest() {
 

@@ -1,6 +1,6 @@
+import core.db.SqlQuery.selectClientByContainsPartOfEmail
+import core.db.SqlQuery.selectClientByIdQuery
 import core.db.TafDbClient
-import core.db.selectClientByContainsPartOfEmail
-import core.db.selectClientByIdQuery
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach

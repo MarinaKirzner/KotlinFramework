@@ -5,12 +5,12 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.openqa.selenium.By
 
-object Button {
+object Dropdown {
 
   private val logger: Logger = LogManager.getLogger()
 
-  fun clickButton(locator: By) {
-    logger.info("Click button $locator")
-    `$`(locator).click()
+  fun setDropdownValue(dropdownValue: By, value: String) {
+    logger.info("Select in dropdown $value")
+    `$`(dropdownValue).selectOptionByValue(value)
   }
 }
