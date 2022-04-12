@@ -29,6 +29,7 @@ class IpruCrmClientDetailsIsSameDbClientDataTest : BaseTest() {
     IpruCrmLoginPageOperations().loginCrm()
   }
 
+
   @AfterEach
   fun sessionClose() {
     tafDbClient.closeDbConnection()
