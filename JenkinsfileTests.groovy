@@ -1,6 +1,6 @@
 @Library('shared_libs@CI_CD_shared_libs')
 
-def gradleTestTask = "internalTest"
+def gradleTestTask = "name"
 
 static String startSelectedTestSuite(String gradleTestTask) {
   return """
