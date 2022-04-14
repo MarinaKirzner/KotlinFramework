@@ -17,9 +17,16 @@ pipeline {
     }
   }
 
+//  post {
+//    always {
+//      junit 'build/test-results/**/*.xml'
+//    }
+//  }
+
   post {
     always {
-      junit 'build/test-results/**/*.xml'
+      archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+      junit 'build/reports/**/*.xml'
     }
   }
 }
