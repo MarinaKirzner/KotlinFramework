@@ -19,6 +19,7 @@ val retrofitConverterGson: String by project
 val wireMockVersion: String by project
 val mySqlConnection: String by project
 val jdbs: String by project
+val jacksonDatabind: String by project
 
 plugins {
   kotlin("jvm") version "1.5.31"
@@ -61,6 +62,7 @@ dependencies {
   testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanager")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleKotlin")
   implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonDataformatYaml")
+  implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabind")
   implementation("org.apache.logging.log4j:log4j-api:$log4jApi")
   implementation("org.apache.logging.log4j:log4j-core:$log4jCore")
   implementation ("com.codeborne:selenide:$selenide")
@@ -71,7 +73,7 @@ dependencies {
   implementation("com.github.tomakehurst:wiremock:$wireMockVersion")
 }
 
-tasks.test {
+tasks.register<Test>("buildTests"){
   useJUnitPlatform()
 }
 

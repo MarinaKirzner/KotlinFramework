@@ -1,4 +1,4 @@
-def gradleTestTask = "name"
+def gradleTestTask = "buildTests"
 
 static String startSelectedTestSuite(String gradleTestTask) {
   return """
