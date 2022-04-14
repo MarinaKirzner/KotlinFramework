@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Build Tests') {
       steps {
-        bat startSelectedTestSuite(gradleTestTask)
+        sh startSelectedTestSuite(gradleTestTask)
       }
     }
   }
