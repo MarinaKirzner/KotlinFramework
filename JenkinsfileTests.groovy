@@ -1,9 +1,7 @@
-def gradleTestTask = "buildTests"
-
-static String startSelectedTestSuite(String gradleTestTask) {
+static String startSelectedTestSuite() {
   return """
             echo Start internal test
-              gradle $gradleTestTask
+              gradle test
   """
 }
 
@@ -12,7 +10,7 @@ pipeline {
   stages {
     stage('Build Tests') {
       steps {
-        bat startSelectedTestSuite(gradleTestTask)
+        bat startSelectedTestSuite()
       }
     }
   }

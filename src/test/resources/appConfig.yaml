@@ -1,3 +1,31 @@
-user: test
-pass: test
-host: qa-delivery-es-release.moneyman.ru
+user: moneyman
+pass: 1005
+host: es-bravo.moneyman.ru
+registrationUrl: /client-area/#/registration?
+registrationEndPoint: /client-area/registration/
+#mmes-PR-1109.idfaws.com
+#mmes-master.idfaws.com
+#es-bravo.moneyman.ru
+
+#CRM API Client
+crmUserConfig:
+ login: admmin
+ password: nimda2012
+ captcha: 11111
+
+#WireMock Config
+wireMockConfig:
+ host: localhost
+ port: 8080
+
+#DB SQL
+dbConnectionConfig:
+  url: jdbc:mysql://mrt-main.idfaws.com:3306?characterEncoding=UTF-8&useSSL=false
+  user: root
+  password: root
+
+#IPRU CRM Config
+ipruCrmConfig:
+  domain: mrt-main.idfaws.com
+  email: automation@mrt.ru
+  pass: 1111

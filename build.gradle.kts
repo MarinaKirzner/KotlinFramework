@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val junitJupiter: String by project
 val accidiaProtoserver: String by project
@@ -65,7 +65,7 @@ dependencies {
   implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabind")
   implementation("org.apache.logging.log4j:log4j-api:$log4jApi")
   implementation("org.apache.logging.log4j:log4j-core:$log4jCore")
-  implementation ("com.codeborne:selenide:$selenide")
+  implementation("com.codeborne:selenide:$selenide")
   implementation("com.squareup.okhttp3:okhttp:$okhttp3")
   implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3LoggingInterceptor")
   implementation("com.squareup.retrofit2:retrofit:$retrofit")
@@ -73,8 +73,9 @@ dependencies {
   implementation("com.github.tomakehurst:wiremock:$wireMockVersion")
 }
 
-tasks.register<Test>("buildTests"){
+tasks.withType<Test> {
   useJUnitPlatform()
+  systemProperties.putAll(project.gradle.startParameter.systemPropertiesArgs)
 }
 
 tasks.withType<KotlinCompile> {
