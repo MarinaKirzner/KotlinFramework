@@ -17,12 +17,6 @@ pipeline {
     }
   }
 
-//  post {
-//    always {
-//      junit 'build/test-results/**/*.xml'
-//    }
-//  }
-
   post {
     always {
       archiveArtifacts artifacts: '**/*.jar', fingerprint: true
