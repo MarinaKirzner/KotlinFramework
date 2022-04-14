@@ -9,6 +9,11 @@ static String startSelectedTestSuite() {
 pipeline {
   agent any
 
+  tools {
+    jdk 'jdk8u172'
+    gradle 'gradle-7.4.1'
+  }
+
   stages {
     stage('Build Tests') {
       steps {
