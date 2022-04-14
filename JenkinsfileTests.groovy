@@ -1,7 +1,7 @@
 static String startSelectedTestSuite() {
   return """
             echo Start internal test
-              gradle clean test
+              gradle clean -i test --tests ApplicationPropertiesTest
               
   """
 }
