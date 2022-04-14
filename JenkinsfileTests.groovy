@@ -19,7 +19,7 @@ pipeline {
 
   post {
     always {
-      junit 'build/test-results/test/TEST-ApplicationPropertiesTest.xml'
+      junit 'TEST-ApplicationPropertiesTest.xml'
     }
   }
 }
