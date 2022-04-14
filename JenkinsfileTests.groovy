@@ -26,6 +26,14 @@ pipeline {
     always {
       archiveArtifacts artifacts: '**/*.jar', fingerprint: true
       junit 'build/test-results/**/*.xml'
+      publishHTML([
+          reportDir            : "${WORKSPACE}/build/reports/tests/tests",
+          reportFiles          : 'index.html',
+          reportName           : "Gradle Test Report",
+          allowMissing         : true,
+          alwaysLinkToLastBuild: true,
+          keepAll              : true]
+      )
     }
   }
 }
