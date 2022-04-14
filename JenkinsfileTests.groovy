@@ -8,6 +8,7 @@ static String startSelectedTestSuite(String gradleTestTask) {
 }
 
 pipeline {
+  agent any
   stages {
     stage('Build Tests') {
       steps {
