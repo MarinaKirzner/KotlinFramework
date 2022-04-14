@@ -1,7 +1,7 @@
 static String startSelectedTestSuite() {
   return """
             echo Start internal test
-              gradle clean -i test --tests ApplicationPropertiesTest
+              gradle test
               
   """
 }
@@ -24,7 +24,7 @@ pipeline {
 
   post {
     always {
-      junit 'build/test-results/test/TEST-ApplicationPropertiesTest.xml'
+      junit 'build/test-results/**/*.xml'
     }
   }
 }
